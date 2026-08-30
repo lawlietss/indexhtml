@@ -106,15 +106,15 @@ Feliz aniversário, Lavi. ♥︎</div><div class="divider"></div><button class="
 const CONFIG={nome:'LAVIS',senha:'PISCININHA AMOR',data:'31/08/2026',titulo:'Para Lavi ♡'};
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
 document.getElementById('nameDisplay').value=CONFIG.nome;document.getElementById('passwordInput').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
-function login(){const p=document.getElementById('passwordInput').value.trim();const m=document.getElementById('loginMessage');if(p!CONFIG.senha){m.textContent='Código incorreto. O sistema não está impressionado.';return}m.textContent='';document.getElementById('userName').textContent=CONFIG.nome;document.getElementById('passwordInput').value='';goTo('screen-dashboard')}
-function revealAudio(n){document.querySelector([data-audio="${n}"]).classList.add('open')}
+function login(){const p=document.getElementById('passwordInput').value.trim();const m=document.getElementById('loginMessage');if(p!==CONFIG.senha){m.textContent='Código incorreto. O sistema não está impressionado.';return}m.textContent='';document.getElementById('userName').textContent=CONFIG.nome;document.getElementById('passwordInput').value='';goTo('screen-dashboard')}
+function revealAudio(n){document.querySelector(`[data-audio="${n}"]`).classList.add('open')}
 function runAway(){const b=document.getElementById('noBtn'),a=document.getElementById('choiceArea');const x=Math.max(0,a.clientWidth-b.offsetWidth),y=Math.max(0,a.clientHeight-b.offsetHeight);b.style.left=Math.round(Math.random()*x)+'px';b.style.top=Math.round(Math.random()*y)+'px';document.getElementById('questionHint').textContent=['Essa opção não está disponível. 🤨','Erro 404: opção não encontrada.','Lavinia, por favor KKKKK','VOCÊ AINDA ESTÁ TENTANDO???','Não. Você sabe que não. 🙂‍↔️'][Math.floor(Math.random()*5)]}
 function yesAnswer(){document.getElementById('choiceArea').style.display='none';document.getElementById('questionHint').style.display='none';document.getElementById('questionSuccess').classList.add('show')}
 function unlockSecret(){document.getElementById('secretFile').style.display='flex';goTo('screen-secret')}
 function flipTarot(el,key){el.classList.add('flipped');document.querySelectorAll('.reading:not(#reading-final)').forEach(r=>r.classList.remove('show'));document.getElementById('reading-'+key).classList.add('show')}
 function showFinalReport(){goTo('screen-report')}
 function openLightbox(file){document.getElementById('lightboxImg').src=file;document.getElementById('lightbox').classList.add('open')}
-function closeLightbox(e){if(e.target.id='lightbox'||e.target.classList.contains('close'))document.getElementById('lightbox').classList.remove('open')}
+function closeLightbox(e){if(e.target.id==='lightbox'||e.target.classList.contains('close'))document.getElementById('lightbox').classList.remove('open')}
 function deleteEvidence(){document.getElementById('deleteMessage').textContent='Erro: não foi, não é, nem será possível apagar🙂‍↔️'}
 </script>
 </body>
