@@ -4,80 +4,965 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Para Lavi ♡</title>
+
 <style>
-:root{--wine:#210b1c;--wine2:#351127;--rose:#d9a8bb;--rose2:#f1d7df;--gold:#e4bd8b;--text:#f8edf2;--muted:#c3aab6;--line:rgba(239,205,218,.18);--glass:rgba(24,8,20,.72);--shadow:0 28px 90px rgba(0,0,0,.55)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font-family:Georgia,"Times New Roman",serif;background:#160713 url('fundo-cosmico.jpg') center top/cover fixed no-repeat;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(20,4,15,.28),rgba(17,4,14,.72));pointer-events:none;z-index:-1}.stars{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff3f6;box-shadow:0 0 10px #fff;animation:twinkle 3s ease-in-out infinite}.star:nth-child(1){left:12%;top:18%;animation-delay:.2s}.star:nth-child(2){left:78%;top:12%;animation-delay:1s}.star:nth-child(3){left:62%;top:37%;animation-delay:1.8s}.star:nth-child(4){left:23%;top:63%;animation-delay:.8s}.star:nth-child(5){left:86%;top:74%;animation-delay:2.1s}.star:nth-child(6){left:47%;top:82%;animation-delay:1.4s}@keyframes twinkle{50%{opacity:.2;transform:scale(.55)}}
-.app{width:min(980px,92vw);margin:auto;padding:38px 0 80px;position:relative;z-index:1}.screen{display:none;animation:appear .7s ease}.screen.active{display:block}@keyframes appear{from{opacity:0;transform:translateY(16px) scale(.99)}to{opacity:1;transform:none}}
-.panel{background:var(--glass);border:1px solid var(--line);border-radius:26px;padding:clamp(22px,5vw,48px);box-shadow:var(--shadow);backdrop-filter:blur(14px)}.terminal,.tiny,.classification,.file-name,.locked,.meta,.audio-head{font-family:"Courier New",monospace;letter-spacing:.08em}.tiny{font-size:11px;color:var(--muted)}h1,h2,h3{font-weight:500}h1{font-size:clamp(42px,8vw,78px);line-height:.94;margin:18px 0;color:var(--rose2);letter-spacing:-.045em}h2{font-size:clamp(31px,6vw,52px);margin:8px 0 18px;color:var(--rose2)}h3{font-size:20px;margin:9px 0 4px}p{line-height:1.85;color:#eadce2}.lead{font-size:18px;color:#d8c5ce}.accent{color:var(--gold)}.divider{height:1px;background:var(--line);margin:27px 0}.btn{appearance:none;border:1px solid rgba(228,189,139,.7);background:rgba(228,189,139,.08);color:var(--rose2);padding:12px 17px;border-radius:13px;cursor:pointer;font:600 13px "Courier New",monospace;letter-spacing:.04em;transition:.22s ease}.btn:hover{transform:translateY(-2px);background:rgba(228,189,139,.18);box-shadow:0 8px 25px rgba(0,0,0,.22)}.btn.secondary{border-color:var(--line);background:rgba(255,255,255,.035)}.btn.danger{border-color:#d9829c;color:#f2b5c7}.center{text-align:center}
-.boot{text-align:center;padding:clamp(35px,8vw,80px) 20px}.moon{font-size:52px;display:inline-block;animation:float 4s ease-in-out infinite}@keyframes float{50%{transform:translateY(-7px)}}.boot p{max-width:650px;margin:0 auto 26px}.boot-log{margin:26px auto;text-align:left;max-width:650px;border:1px solid var(--line);border-radius:15px;padding:18px;background:rgba(0,0,0,.2);font:12px/2 "Courier New",monospace;color:#d8c7cf}
-.field{margin:18px 0}label{display:block;color:var(--muted);font:11px "Courier New",monospace;margin-bottom:8px;letter-spacing:.08em}input{width:100%;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--text);border-radius:12px;padding:14px;font:15px "Courier New",monospace;outline:none}input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(228,189,139,.08)}.error{min-height:20px;color:#efafc1;font:11px "Courier New",monospace;margin-top:10px}
-.file-grid{display:grid;gap:13px;margin-top:24px}.file-card{display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:16px;padding:18px;transition:.22s}.file-card:hover{transform:translateY(-2px);border-color:rgba(228,189,139,.35);background:rgba(255,255,255,.055)}.file-name{font-size:12px;color:#f0e2e8}.locked{font-size:10px;color:var(--muted);margin-top:6px}.footer{margin-top:25px;text-align:center;color:var(--muted);font:10px "Courier New",monospace}
-.letter{white-space:pre-line;border:1px solid var(--line);background:rgba(8,2,8,.3);border-radius:17px;padding:clamp(20px,4vw,32px);font-size:16px;line-height:2;color:#f1e5ea}.audio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:18px}.audio-card{border:1px solid var(--line);border-radius:16px;padding:17px;background:rgba(255,255,255,.025)}.audio-head{display:flex;justify-content:space-between;gap:10px;font-size:9px;color:var(--muted)}.status{color:var(--gold)}.artist{font-size:13px;color:var(--muted)}.reveal{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}.audio-card.open .reveal{display:block}.audio-card.open .reveal-btn{display:none}.classification{color:var(--gold);font-size:10px}
-.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:22px}.photo-card{border:1px solid var(--line);background:rgba(10,2,10,.45);border-radius:17px;overflow:hidden;text-align:left;color:var(--text);cursor:pointer;padding:0;transition:.25s}.photo-card:hover{transform:translateY(-4px);border-color:rgba(228,189,139,.45)}.photo-card img{width:100%;height:290px;display:block;object-fit:cover}.photo-card .caption{padding:14px}.photo-card .caption strong{display:block;font:11px "Courier New",monospace;color:var(--gold);margin-bottom:7px}.photo-card .caption span{display:block;font-size:13px;line-height:1.55;color:#d9c8cf}.lightbox{position:fixed;inset:0;background:rgba(7,1,7,.94);display:none;align-items:center;justify-content:center;padding:22px;z-index:30}.lightbox.open{display:flex}.lightbox img{max-width:94vw;max-height:88vh;border-radius:14px;box-shadow:var(--shadow)}.close{position:absolute;top:18px;right:18px}
-.question{text-align:center}.choice-area{position:relative;height:210px;max-width:600px;margin:10px auto}.choice-area .btn{position:absolute;top:75px}.yes{left:30%}.no{left:58%}.hint{color:var(--muted);font:11px "Courier New",monospace}.success{display:none;margin-top:20px;border:1px solid rgba(228,189,139,.35);background:rgba(228,189,139,.05);border-radius:16px;padding:24px}.success.show{display:block}
-.secret{background:rgba(13,2,12,.82);border-color:rgba(228,189,139,.28)}.tarot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:26px 0}.tarot-card{min-height:290px;border:1px solid rgba(228,189,139,.35);border-radius:18px;background:radial-gradient(circle at 50% 25%,rgba(228,189,139,.12),transparent 32%),linear-gradient(145deg,#2a0d23,#10030e);color:var(--rose2);cursor:pointer;position:relative;overflow:hidden;padding:18px;transition:.35s;box-shadow:inset 0 0 0 7px rgba(228,189,139,.035)}.tarot-card:hover{transform:translateY(-5px) rotate(.4deg);box-shadow:0 18px 40px rgba(0,0,0,.35)}.tarot-card:before{content:"✦ ☾ ✦";position:absolute;inset:12px;border:1px solid rgba(228,189,139,.3);border-radius:12px;display:grid;place-items:center;color:rgba(228,189,139,.5);font-size:24px}.tarot-card .face{display:none;position:relative;z-index:1}.tarot-card.flipped:before{display:none}.tarot-card.flipped .back{display:none}.tarot-card.flipped .face{display:block}.back{position:relative;z-index:1;font:700 11px "Courier New",monospace;letter-spacing:.16em;color:var(--muted)}.card-symbol{font-size:46px;color:var(--gold);margin:20px 0 12px}.reading{display:none;border-top:1px solid var(--line);padding:20px 0 0}.reading.show{display:block}.final-note{white-space:pre-line;border:1px solid var(--line);border-radius:17px;background:rgba(0,0,0,.2);padding:22px;line-height:1.9;color:#eadde3}.report{border-color:rgba(228,189,139,.25)}
-@media(max-width:700px){.audio-grid,.gallery,.tarot-grid{grid-template-columns:1fr}.file-card{align-items:flex-start;flex-direction:column}.photo-card img{height:340px}.choice-area{height:240px}.yes{left:15%}.no{left:55%}}
+:root{
+--wine:#210b1c;
+--wine2:#351127;
+--rose:#d9a8bb;
+--rose2:#f1d7df;
+--gold:#e4bd8b;
+--text:#f8edf2;
+--muted:#c3aab6;
+--line:rgba(239,205,218,.18);
+--glass:rgba(24,8,20,.72);
+--shadow:0 28px 90px rgba(0,0,0,.55)
+}
+
+*{box-sizing:border-box}
+
+html{
+scroll-behavior:smooth
+}
+
+body{
+margin:0;
+min-height:100vh;
+color:var(--text);
+font-family:Georgia,"Times New Roman",serif;
+background:#160713 url('fundo-cosmico.jpg') center top/cover fixed no-repeat;
+overflow-x:hidden
+}
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+background:linear-gradient(
+180deg,
+rgba(20,4,15,.28),
+rgba(17,4,14,.72)
+);
+pointer-events:none;
+z-index:-1
+}
+
+/* ESTRELAS DO FUNDO */
+
+.stars{
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:0
+}
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+border-radius:50%;
+background:#fff3f6;
+box-shadow:0 0 10px #fff;
+animation:twinkle 3s ease-in-out infinite
+}
+
+.star:nth-child(1){
+left:12%;
+top:18%;
+animation-delay:.2s
+}
+
+.star:nth-child(2){
+left:78%;
+top:12%;
+animation-delay:1s
+}
+
+.star:nth-child(3){
+left:62%;
+top:37%;
+animation-delay:1.8s
+}
+
+.star:nth-child(4){
+left:23%;
+top:63%;
+animation-delay:.8s
+}
+
+.star:nth-child(5){
+left:86%;
+top:74%;
+animation-delay:2.1s
+}
+
+.star:nth-child(6){
+left:47%;
+top:82%;
+animation-delay:1.4s
+}
+
+@keyframes twinkle{
+50%{
+opacity:.2;
+transform:scale(.55)
+}
+}
+
+.app{
+width:min(980px,92vw);
+margin:auto;
+padding:38px 0 80px;
+position:relative;
+z-index:1
+}
+
+.screen{
+display:none;
+animation:appear .7s ease
+}
+
+.screen.active{
+display:block
+}
+
+@keyframes appear{
+from{
+opacity:0;
+transform:translateY(16px) scale(.99)
+}
+to{
+opacity:1;
+transform:none
+}
+}
+
+.panel{
+background:var(--glass);
+border:1px solid var(--line);
+border-radius:26px;
+padding:clamp(22px,5vw,48px);
+box-shadow:var(--shadow);
+backdrop-filter:blur(14px)
+}
+
+.terminal,
+.tiny,
+.classification,
+.file-name,
+.locked,
+.meta,
+.audio-head{
+font-family:"Courier New",monospace;
+letter-spacing:.08em
+}
+
+.tiny{
+font-size:11px;
+color:var(--muted)
+}
+
+h1,h2,h3{
+font-weight:500
+}
+
+h1{
+font-size:clamp(42px,8vw,78px);
+line-height:.94;
+margin:18px 0;
+color:var(--rose2);
+letter-spacing:-.045em
+}
+
+h2{
+font-size:clamp(31px,6vw,52px);
+margin:8px 0 18px;
+color:var(--rose2)
+}
+
+h3{
+font-size:20px;
+margin:9px 0 4px
+}
+
+p{
+line-height:1.85;
+color:#eadce2
+}
+
+.lead{
+font-size:18px;
+color:#d8c5ce
+}
+
+.accent{
+color:var(--gold)
+}
+
+.divider{
+height:1px;
+background:var(--line);
+margin:27px 0
+}
+
+.btn{
+appearance:none;
+border:1px solid rgba(228,189,139,.7);
+background:rgba(228,189,139,.08);
+color:var(--rose2);
+padding:12px 17px;
+border-radius:13px;
+cursor:pointer;
+font:600 13px "Courier New",monospace;
+letter-spacing:.04em;
+transition:.22s ease
+}
+
+.btn:hover{
+transform:translateY(-2px);
+background:rgba(228,189,139,.18);
+box-shadow:0 8px 25px rgba(0,0,0,.22)
+}
+
+.btn.secondary{
+border-color:var(--line);
+background:rgba(255,255,255,.035)
+}
+
+.btn.danger{
+border-color:#d9829c;
+color:#f2b5c7
+}
+
+.center{
+text-align:center
+}
+
+/* TELA INICIAL */
+
+.boot{
+text-align:center;
+padding:clamp(35px,8vw,80px) 20px
+}
+
+.moon{
+font-size:52px;
+display:inline-block;
+animation:float 4s ease-in-out infinite
+}
+
+@keyframes float{
+50%{
+transform:translateY(-7px)
+}
+}
+
+.boot p{
+max-width:650px;
+margin:0 auto 26px
+}
+
+.boot-log{
+margin:26px auto;
+text-align:left;
+max-width:650px;
+border:1px solid var(--line);
+border-radius:15px;
+padding:18px;
+background:rgba(0,0,0,.2);
+font:12px/2 "Courier New",monospace;
+color:#d8c7cf
+}
+
+/* LOGIN */
+
+.field{
+margin:18px 0
+}
+
+label{
+display:block;
+color:var(--muted);
+font:11px "Courier New",monospace;
+margin-bottom:8px;
+letter-spacing:.08em
+}
+
+input{
+width:100%;
+border:1px solid var(--line);
+background:rgba(0,0,0,.25);
+color:var(--text);
+border-radius:12px;
+padding:14px;
+font:15px "Courier New",monospace;
+outline:none
+}
+
+input:focus{
+border-color:var(--gold);
+box-shadow:0 0 0 3px rgba(228,189,139,.08)
+}
+
+.error{
+min-height:20px;
+color:#efafc1;
+font:11px "Courier New",monospace;
+margin-top:10px
+}
+
+/* ARQUIVOS */
+
+.file-grid{
+display:grid;
+gap:13px;
+margin-top:24px
+}
+
+.file-card{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+border:1px solid var(--line);
+background:rgba(255,255,255,.035);
+border-radius:16px;
+padding:18px;
+transition:.22s
+}
+
+.file-card:hover{
+transform:translateY(-2px);
+border-color:rgba(228,189,139,.35);
+background:rgba(255,255,255,.055)
+}
+
+.file-name{
+font-size:12px;
+color:#f0e2e8
+}
+
+.locked{
+font-size:10px;
+color:var(--muted);
+margin-top:6px
+}
+
+.footer{
+margin-top:25px;
+text-align:center;
+color:var(--muted);
+font:10px "Courier New",monospace
+}
+
+/* CARTA */
+
+.letter{
+white-space:pre-line;
+border:1px solid var(--line);
+background:rgba(8,2,8,.3);
+border-radius:17px;
+padding:clamp(20px,4vw,32px);
+font-size:16px;
+line-height:2;
+color:#f1e5ea
+}
+
+/* MÚSICAS */
+
+.audio-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:13px;
+margin-top:18px
+}
+
+.audio-card{
+border:1px solid var(--line);
+border-radius:16px;
+padding:17px;
+background:rgba(255,255,255,.025)
+}
+
+.audio-head{
+display:flex;
+justify-content:space-between;
+gap:10px;
+font-size:9px;
+color:var(--muted)
+}
+
+.status{
+color:var(--gold)
+}
+
+.artist{
+font-size:13px;
+color:var(--muted)
+}
+
+.reveal{
+display:none;
+margin-top:14px;
+padding-top:14px;
+border-top:1px dashed var(--line)
+}
+
+.audio-card.open .reveal{
+display:block
+}
+
+.audio-card.open .reveal-btn{
+display:none
+}
+
+.classification{
+color:var(--gold);
+font-size:10px
+}
+
+/* GALERIA */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:15px;
+margin-top:22px
+}
+
+.photo-card{
+border:1px solid var(--line);
+background:rgba(10,2,10,.45);
+border-radius:17px;
+overflow:hidden;
+text-align:left;
+color:var(--text);
+cursor:pointer;
+padding:0;
+transition:.25s
+}
+
+.photo-card:hover{
+transform:translateY(-4px);
+border-color:rgba(228,189,139,.45)
+}
+
+.photo-card img{
+width:100%;
+height:290px;
+display:block;
+object-fit:cover
+}
+
+.photo-card .caption{
+padding:14px
+}
+
+.photo-card .caption strong{
+display:block;
+font:11px "Courier New",monospace;
+color:var(--gold);
+margin-bottom:7px
+}
+
+.photo-card .caption span{
+display:block;
+font-size:13px;
+line-height:1.55;
+color:#d9c8cf
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(7,1,7,.94);
+display:none;
+align-items:center;
+justify-content:center;
+padding:22px;
+z-index:30
+}
+
+.lightbox.open{
+display:flex
+}
+
+.lightbox img{
+max-width:94vw;
+max-height:88vh;
+border-radius:14px;
+box-shadow:var(--shadow)
+}
+
+.close{
+position:absolute;
+top:18px;
+right:18px
+}
+
+/* PERGUNTA */
+
+.question{
+text-align:center
+}
+
+.choice-area{
+position:relative;
+height:210px;
+max-width:600px;
+margin:10px auto
+}
+
+.choice-area .btn{
+position:absolute;
+top:75px
+}
+
+.yes{
+left:30%
+}
+
+.no{
+left:58%
+}
+
+.hint{
+color:var(--muted);
+font:11px "Courier New",monospace
+}
+
+.success{
+display:none;
+margin-top:20px;
+border:1px solid rgba(228,189,139,.35);
+background:rgba(228,189,139,.05);
+border-radius:16px;
+padding:24px
+}
+
+.success.show{
+display:block
+}
+
+/* TAROT */
+
+.secret{
+background:rgba(13,2,12,.82);
+border-color:rgba(228,189,139,.28)
+}
+
+.tarot-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin:26px 0
+}
+
+.tarot-card{
+min-height:290px;
+border:1px solid rgba(228,189,139,.35);
+border-radius:18px;
+background:
+radial-gradient(
+circle at 50% 25%,
+rgba(228,189,139,.12),
+transparent 32%
+),
+linear-gradient(145deg,#2a0d23,#10030e);
+color:var(--rose2);
+cursor:pointer;
+position:relative;
+overflow:hidden;
+padding:18px;
+transition:.35s;
+box-shadow:
+inset 0 0 0 7px rgba(228,189,139,.035)
+}
+
+.tarot-card:hover{
+transform:translateY(-5px) rotate(.4deg);
+box-shadow:0 18px 40px rgba(0,0,0,.35)
+}
+
+.tarot-card:before{
+content:"✦ ☾ ✦";
+position:absolute;
+inset:12px;
+border:1px solid rgba(228,189,139,.3);
+border-radius:12px;
+display:grid;
+place-items:center;
+color:rgba(228,189,139,.5);
+font-size:24px
+}
+
+.tarot-card .face{
+display:none;
+position:relative;
+z-index:1
+}
+
+.tarot-card.flipped:before{
+display:none
+}
+
+.tarot-card.flipped .back{
+display:none
+}
+
+.tarot-card.flipped .face{
+display:block
+}
+
+.back{
+position:relative;
+z-index:1;
+font:700 11px "Courier New",monospace;
+letter-spacing:.16em;
+color:var(--muted)
+}
+
+.card-symbol{
+font-size:46px;
+color:var(--gold);
+margin:20px 0 12px
+}
+
+.reading{
+display:none;
+border-top:1px solid var(--line);
+padding:20px 0 0
+}
+
+.reading.show{
+display:block
+}
+
+.final-note{
+white-space:pre-line;
+border:1px solid var(--line);
+border-radius:17px;
+background:rgba(0,0,0,.2);
+padding:22px;
+line-height:1.9;
+color:#eadde3
+}
+
+.report{
+border-color:rgba(228,189,139,.25)
+}
+
+/* ✦ ESTRELAS MÁGICAS DOS BOTÕES ✦ */
+
 .magic-star{
-    position:fixed;
-    width:6px;
-    height:6px;
-    pointer-events:none;
-    z-index:9999;
-    background:var(--gold);
-    border-radius:50%;
-    box-shadow:0 0 6px var(--gold),0 0 14px var(--rose2);
-    animation:magicStar .9s ease-out forwards;
-}
-
-.magic-star::before,
-.magic-star::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:50%;
-    background:inherit;
-    transform:translate(-50%,-50%);
-}
-
-.magic-star::before{
-    width:2px;
-    height:14px;
-}
-
-.magic-star::after{
-    width:14px;
-    height:2px;
+position:fixed;
+z-index:9999;
+pointer-events:none;
+color:#e4bd8b;
+font-size:18px;
+text-shadow:
+0 0 5px #fff,
+0 0 12px #e4bd8b,
+0 0 22px rgba(228,189,139,.8);
+transform:translate(-50%,-50%) scale(.3);
+animation:magicStar 1s ease-out forwards;
+animation-delay:var(--delay)
 }
 
 @keyframes magicStar{
-    0%{
-        opacity:1;
-        transform:translate(-50%,-50%) scale(.4) rotate(0deg);
-    }
 
-    100%{
-        opacity:0;
-        transform:
-            translate(
-                calc(-50% + var(--x)),
-                calc(-50% + var(--y))
-            )
-            scale(.15)
-            rotate(180deg);
-    }
+0%{
+opacity:0;
+transform:
+translate(-50%,-50%)
+translate(0,0)
+scale(.2)
+rotate(0deg)
+}
+
+20%{
+opacity:1;
+transform:
+translate(-50%,-50%)
+translate(0,0)
+scale(1.2)
+rotate(45deg)
+}
+
+100%{
+opacity:0;
+transform:
+translate(-50%,-50%)
+translate(var(--x),var(--y))
+scale(.15)
+rotate(180deg)
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.audio-grid,
+.gallery,
+.tarot-grid{
+grid-template-columns:1fr
+}
+
+.file-card{
+align-items:flex-start;
+flex-direction:column
+}
+
+.photo-card img{
+height:340px
+}
+
+.choice-area{
+height:240px
+}
+
+.yes{
+left:15%
+}
+
+.no{
+left:55%
+}
+
 }
 </style>
 </head>
+
 <body>
-<div class="stars"><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i></div>
+
+<div class="stars">
+<i class="star"></i>
+<i class="star"></i>
+<i class="star"></i>
+<i class="star"></i>
+<i class="star"></i>
+<i class="star"></i>
+</div>
+
 <main class="app">
-<section class="screen active" id="screen-boot"><div class="panel boot"><div class="moon">☾</div><div class="tiny">BIRTHDAY PROTOCOL // 01</div><h1>Para você,<br><span class="accent">Lavi.</span></h1><p class="lead">Poucas pessoas merecem o que eu fiz para você. Isso é o suficiente pra entender sua importância.</p><div class="boot-log">> observando as estrelas...<br>> recuperando memórias...<br>> encontrando arquivos antigos...<br>> escondendo algumas provas...<br>> <span class="accent">acesso preparado</span></div><button class="btn" onclick="goTo('screen-login')">[ ENTRAR ]</button></div></section>
 
-<section class="screen" id="screen-login"><div class="panel"><div class="tiny">ACCESS // RESTRICTED</div><h2>Antes de entrar...</h2><p class="lead">Só uma pessoa deveria ter acesso a isso.</p><div class="field"><label>IDENTIFICAÇÃO</label><input id="nameDisplay" readonly></div><div class="field"><label>CÓDIGO DE ACESSO</label><input id="passwordInput" type="password" placeholder="••••••••" autocomplete="off"></div><button class="btn" onclick="login()">[ DESBLOQUEAR ]</button><div class="error" id="loginMessage"></div></div></section>
+<!-- TELA INICIAL -->
 
-<section class="screen" id="screen-dashboard"><div class="panel"><div class="tiny">ACCESS GRANTED // USER IDENTIFIED</div><h2>Bem-vinda, <span class="accent" id="userName"></span>.</h2><p class="lead">Eu recomendo abrir todos, um de cada vez, porque eu passei tempo demais fazendo isso para você ignorar algum visse </p><div class="file-grid"><article class="file-card"><div><div class="file-name">/arquivo_01/memorias.dat</div><div class="locked">STATUS: DISPONÍVEL</div></div><button class="btn" onclick="goTo('screen-memorias')">Abrir</button></article><article class="file-card"><div><div class="file-name">/arquivo_02/memoria_visual.dat</div><div class="locked">STATUS: DISPONÍVEL</div></div><button class="btn" onclick="goTo('screen-fotos')">Abrir</button></article><article class="file-card"><div><div class="file-name">/arquivo_03/questionario.exe</div><div class="locked">STATUS: DISPONÍVEL</div></div><button class="btn" onclick="goTo('screen-question')">Abrir</button></article><article class="file-card" id="secretFile" style="display:none"><div><div class="file-name">/???/SECRET.exe</div><div class="locked">STATUS: NOVO ARQUIVO DETECTADO</div></div><button class="btn" onclick="goTo('screen-secret')">Acessar</button></article></div><div class="footer">31/08/2026 // feito com carinho e um pouco de perturbação</div></div></section>
+<section class="screen active" id="screen-boot">
 
-<section class="screen" id="screen-memorias"><div class="panel"><div class="tiny">/arquivo_01/memorias.dat // DECRYPTED</div><h2>MEMÓRIAS</h2><div class="letter">Minha querida Lavinia,
+<div class="panel boot">
+
+<div class="moon">☾</div>
+
+<div class="tiny">BIRTHDAY PROTOCOL // 01</div>
+
+<h1>
+Para você,<br>
+<span class="accent">Lavi.</span>
+</h1>
+
+<p class="lead">
+Poucas pessoas merecem o que eu fiz para você.
+Isso é o suficiente pra entender sua importância.
+</p>
+
+<div class="boot-log">
+> observando as estrelas...<br>
+> recuperando memórias...<br>
+> encontrando arquivos antigos...<br>
+> escondendo algumas provas...<br>
+> <span class="accent">acesso preparado</span>
+</div>
+
+<button class="btn" onclick="goTo('screen-login')">
+[ ENTRAR ]
+</button>
+
+</div>
+
+</section>
+
+
+<!-- LOGIN -->
+
+<section class="screen" id="screen-login">
+
+<div class="panel">
+
+<div class="tiny">ACCESS // RESTRICTED</div>
+
+<h2>Antes de entrar...</h2>
+
+<p class="lead">
+Só uma pessoa deveria ter acesso a isso.
+</p>
+
+<div class="field">
+
+<label>IDENTIFICAÇÃO</label>
+
+<input id="nameDisplay" readonly>
+
+</div>
+
+<div class="field">
+
+<label>CÓDIGO DE ACESSO</label>
+
+<input
+id="passwordInput"
+type="password"
+placeholder="••••••••"
+autocomplete="off"
+>
+
+</div>
+
+<button class="btn" onclick="login()">
+[ DESBLOQUEAR ]
+</button>
+
+<div class="error" id="loginMessage"></div>
+
+</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section class="screen" id="screen-dashboard">
+
+<div class="panel">
+
+<div class="tiny">
+ACCESS GRANTED // USER IDENTIFIED
+</div>
+
+<h2>
+Bem-vinda,
+<span class="accent" id="userName"></span>.
+</h2>
+
+<p class="lead">
+Eu recomendo abrir todos, um de cada vez,
+porque eu passei tempo demais fazendo isso para você ignorar algum visse
+</p>
+
+<div class="file-grid">
+
+<article class="file-card">
+
+<div>
+<div class="file-name">
+/arquivo_01/memorias.dat
+</div>
+
+<div class="locked">
+STATUS: DISPONÍVEL
+</div>
+</div>
+
+<button class="btn" onclick="goTo('screen-memorias')">
+Abrir
+</button>
+
+</article>
+
+
+<article class="file-card">
+
+<div>
+<div class="file-name">
+/arquivo_02/memoria_visual.dat
+</div>
+
+<div class="locked">
+STATUS: DISPONÍVEL
+</div>
+</div>
+
+<button class="btn" onclick="goTo('screen-fotos')">
+Abrir
+</button>
+
+</article>
+
+
+<article class="file-card">
+
+<div>
+<div class="file-name">
+/arquivo_03/questionario.exe
+</div>
+
+<div class="locked">
+STATUS: DISPONÍVEL
+</div>
+</div>
+
+<button class="btn" onclick="goTo('screen-question')">
+Abrir
+</button>
+
+</article>
+
+
+<article
+class="file-card"
+id="secretFile"
+style="display:none"
+>
+
+<div>
+
+<div class="file-name">
+/???/SECRET.exe
+</div>
+
+<div class="locked">
+STATUS: NOVO ARQUIVO DETECTADO
+</div>
+
+</div>
+
+<button class="btn" onclick="goTo('screen-secret')">
+Acessar
+</button>
+
+</article>
+
+</div>
+
+<div class="footer">
+31/08/2026 // feito com carinho e um pouco de perturbação
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MEMÓRIAS -->
+
+<section class="screen" id="screen-memorias">
+
+<div class="panel">
+
+<div class="tiny">
+/arquivo_01/memorias.dat // DECRYPTED
+</div>
+
+<h2>MEMÓRIAS</h2>
+
+<div class="letter">
+
+Minha querida Lavinia,
 
 Ps: Provavelmente eu vou dizer muitas coisas que já foram ditas.
 
@@ -87,31 +972,844 @@ Você é um presente na minha vida e na vida de quem merece ter sua presença, t
 
 Eu te amo e te quero na minha vida, nossos sentimentos são recíprocos e eu amo isso, você me complementa. Espero que seu dia seja SEU dia, mesmo sendo início da semana, feliz aniversário Lavi, meu amor♥︎
 
-Você é maravilhosa, alguém muito inteligente, conselheira, compreensiva, bonita, simpática, atenciosa, carinhosa, companheira, engraçada, esforçada, gostosa E peituda, a mais mais da minha vida, não se esqueça disso, miau.🐈‍⬛</div><div class="divider"></div><div class="tiny">AUDIO DATABASE // 06 FILES FOUND</div><div class="audio-grid">
-<article class="audio-card" data-audio="1"><div class="audio-head"><span>AUDIO LOG // 01</span><span class="status">CLASSIFIED</span></div><h3>Piscininha Amor</h3><div class="artist">Whadi Gama</div><div class="reveal"><div class="classification">CLASSIFICATION: PIADA INTERNA</div><p>Essa não faria sentido para quase ninguém. Para nós, felizmente, faz KKKKK.</p><a class="btn" target="_blank" rel="noopener" href="https://open.spotify.com/track/4Da1U4No5kamKMoJ82RGan?si=6lCfBhAKRmqkzqK5s3pizA&utm_source=copy-link">▶ OUVIR NO SPOTIFY</a></div><button class="btn reveal-btn" onclick="revealAudio(1)">[ REVELAR ]</button></article>
-<article class="audio-card" data-audio="2"><div class="audio-head"><span>AUDIO LOG // 02</span><span class="status">CLASSIFIED</span></div><h3>Deusa</h3><div class="artist">Venere Vai Venus</div><div class="reveal"><div class="classification">CLASSIFICATION: DEDICATÓRIA</div><p>Essa aqui é para você. Simplesmente porque é.</p><a class="btn" target="_blank" rel="noopener" href="https://open.spotify.com/track/4vUPHEnXmCtcl0ZRnlQwaJ?si=gSFOJOT2QNu38IlGU2tlYQ&utm_source=copy-link">▶ OUVIR NO SPOTIFY</a></div><button class="btn reveal-btn" onclick="revealAudio(2)">[ REVELAR ]</button></article>
-<article class="audio-card" data-audio="3"><div class="audio-head"><span>AUDIO LOG // 03</span><span class="status">CLASSIFIED</span></div><h3>Já que Me Ensinou a Beber</h3><div class="artist">Os Barões da Pisadinha</div><div class="reveal"><div class="classification">CLASSIFICATION: PIADA + EVIDÊNCIA</div><p>Pensei nessa porque você que me fez começar a beber um icezinho. A responsabilidade é sua.</p><a class="btn" target="_blank" rel="noopener" href="https://open.spotify.com/track/6nWPzkaAjRdjAGSFhpGc3O?si=jGZR2PjGQZuABtUFbiih0g&utm_source=copy-link">▶ OUVIR NO SPOTIFY</a></div><button class="btn reveal-btn" onclick="revealAudio(3)">[ REVELAR ]</button></article>
-<article class="audio-card" data-audio="4"><div class="audio-head"><span>AUDIO LOG // 04</span><span class="status">CLASSIFIED</span></div><h3>Pensamentos Intrusivos</h3><div class="artist">Ebony</div><div class="reveal"><div class="classification">CLASSIFICATION: PERFIL IDENTIFICADO</div><p>Não precisei pensar muito. É a sua cara. O sistema analisou e decidiu que eu estava certa.</p><a class="btn" target="_blank" rel="noopener" href="https://open.spotify.com/track/7kWt0FtRDglVrRGjOxougB?si=csX5kKtqSj-1ENJ1rA0gOA&utm_source=copy-link">▶ OUVIR NO SPOTIFY</a></div><button class="btn reveal-btn" onclick="revealAudio(4)">[ REVELAR ]</button></article>
-<article class="audio-card" data-audio="5"><div class="audio-head"><span>AUDIO LOG // 05</span><span class="status">CLASSIFIED</span></div><h3>Pegasus Fantasy</h3><div class="artist">Edu Falaschi</div><div class="reveal"><div class="classification">CLASSIFICATION: REFERÊNCIA DETECTADA</div><p>Saint Seiya. Preciso dizer mais alguma coisa? KKKKK.</p><a class="btn" target="_blank" rel="noopener" href="https://open.spotify.com/track/5ljfOnPqCGc6iXqdIE0eN7?si=f5A_AsvXQDaReSniLFY7uA&utm_source=copy-link">▶ OUVIR NO SPOTIFY</a></div><button class="btn reveal-btn" onclick="revealAudio(5)">[ REVELAR ]</button></article>
-<article class="audio-card" data-audio="6"><div class="audio-head"><span>AUDIO LOG // 06</span><span class="status">CLASSIFIED</span></div><h3>Heróis Digitais</h3><div class="artist">Miura Jam BR</div><div class="reveal"><div class="classification">CLASSIFICATION: REFERÊNCIA DETECTADA</div><p>Temos bom gosto, como pode?</p><a class="btn" target="_blank" rel="noopener" href="https://open.spotify.com/track/4lFtFrnUoHUP6AQOV8U4Io?si=crAEs74DTk-PFFHNkYuSPQ&utm_source=copy-link">▶ OUVIR NO SPOTIFY</a></div><button class="btn reveal-btn" onclick="revealAudio(6)">[ REVELAR ]</button></article>
-</div><div class="divider"></div><button class="btn secondary" onclick="goTo('screen-dashboard')">← Voltar</button></div></section>
+Você é maravilhosa, alguém muito inteligente, conselheira, compreensiva, bonita, simpática, atenciosa, carinhosa, companheira, engraçada, esforçada, gostosa E peituda, a mais mais da minha vida, não se esqueça disso, miau.🐈‍⬛
 
-<section class="screen" id="screen-fotos"><div class="panel"><div class="tiny">/arquivo_02/memoria_visual.dat // IMAGE DATABASE</div><h2>EVIDÊNCIAS</h2><p class="lead">Alguns registros foram considerados importantes demais.</p><div class="gallery">
-<button class="photo-card" onclick="openLightbox('223788.jpg')"><img src="223788.jpg" alt="Print de conversa"><div class="caption"><strong>REGISTRO // 01</strong><span>Um pequeno histórico de provas de que o nome Lavinia/Lavi aparece mais vezes do que deveria KKKKK.</span></div></button>
-<button class="photo-card" onclick="openLightbox('223786.jpg')"><img src="223786.jpg" alt="Print de conversa"><div class="caption"><strong>REGISTRO // 02</strong><span>Mais uma busca extremamente científica no arquivo.</span></div></button>
-<button class="photo-card" onclick="openLightbox('224047.jpg')"><img src="224047.jpg" alt="Ilustração inspirada em Saint Seiya"><div class="caption"><strong>REGISTRO // 03</strong><span> Nosso encontro uns tempos atrás, ficamos incríveis de armadura dourada, inspirada naquela foto dos nossos antepassados.</span></div></button>
-<button class="photo-card" onclick="openLightbox('221917.jpg')"><img src="221917.jpg" alt="Ilustração inspirada em Saint Seiya"><div class="caption"><strong>REGISTRO // 04</strong><span>Essa.</span></div></button>
-<button class="photo-card" onclick="openLightbox('Screenshot_20240421_211119_Discord.jpg')"><img src="Screenshot_20240421_211119_Discord.jpg" alt="Print de conversa no Discord"><div class="caption"><strong>REGISTRO // 05</strong><span>Linda. TE AMO.</span></div></button>
-<button class="photo-card" onclick="openLightbox('221904.jpg')"><img src="221904.jpg" alt="Registro de Saint Seiya"><div class="caption"><strong>REGISTRO // 06</strong><span>Evidência de que Saint Seiya ocupa um espaço considerável no nosso coração.</span></div></button>
-<button class="photo-card" onclick="openLightbox('6141.jpg')"><img src="6141.jpg" alt="Print de conversa"><div class="caption"><strong>REGISTRO // 07</strong><span>Minha alma gêmea.</span></div></button>
-<button class="photo-card" onclick="openLightbox('6142.jpg')"><img src="6142.jpg" alt="Print de conversa"><div class="caption"><strong>REGISTRO // 09</strong><span>EU TAMBÉM TE AMOOO😭</span></div></button>
-<button class="photo-card" onclick="openLightbox('223784.jpg')"><img src="223784.jpg" alt="Print de conversa"><div class="caption"><strong>REGISTRO // 10</strong><span>Cumplicidade né? E um toque de falta de noção.</span></div></button>
-<button class="photo-card" onclick="openLightbox('mclavislacre.png')"><img src="mclavislacre.png" alt="Registro visual"><div class="caption"><strong>REGISTRO // 11</strong><span>Uma última evidência. Sem contexto. Porque algumas coisas ficam melhores assim.</span></div></button>
-</div><div class="divider"></div><button class="btn secondary" onclick="goTo('screen-dashboard')">← Voltar</button></div></section>
+</div>
 
-<section class="screen" id="screen-question"><div class="panel question"><div class="tiny">/arquivo_03/questionario.exe</div><h2>Uma pergunta importante.</h2><p class="lead">Lavi, você me ama?</p><div class="choice-area" id="choiceArea"><button class="btn yes" id="yesBtn" onclick="yesAnswer()">SIM</button><button class="btn danger no" id="noBtn" onclick="runAway()">NÃO</button></div><div class="hint" id="questionHint">Escolha com sabedoria🙂‍↔️</div><div class="success" id="questionSuccess"><div class="tiny">> RESPOSTA REGISTRADA</div><h3>SIM.</h3><p>Eu sabia. Não tinha nem graça perguntar. KKKKK.</p><button class="btn" onclick="unlockSecret()">[ CONTINUAR ]</button></div></div></section>
+<div class="divider"></div>
 
-<section class="screen" id="screen-secret"><div class="panel secret"><div class="tiny">/???/SECRET.exe // TOP SECRET</div><h2>O QUE ESTAVA ESCRITO</h2><p class="lead">Há uma última coisa aqui.</p><div class="divider"></div><p>Foram encontradas três cartas.</p><p><strong>Vire uma por vez.</strong></p><div class="tarot-grid"><button class="tarot-card" onclick="flipTarot(this,'sacerdotisa')"><span class="back">CARTA // 01</span><span class="face"><div class="card-symbol">☾</div><strong>II — A SACERDOTISA</strong><br><span class="tiny">INTUIÇÃO · SABEDORIA · MISTÉRIO</span></span></button><button class="tarot-card" onclick="flipTarot(this,'amantes')"><span class="back">CARTA // 02</span><span class="face"><div class="card-symbol">♡</div><strong>VI — OS AMANTES</strong><br><span class="tiny">CONEXÃO · ESCOLHA · RECIPROCIDADE</span></span></button><button class="tarot-card" onclick="flipTarot(this,'justica')"><span class="back">CARTA // 03</span><span class="face"><div class="card-symbol">⚖</div><strong>XI — A JUSTIÇA</strong><br><span class="tiny">VERDADE · EQUILÍBRIO · CONSEQUÊNCIA</span></span></button></div><div class="reading" id="reading-sacerdotisa"><h3>II — A SACERDOTISA</h3><p>Talvez essa seja a carta que mais me lembra você.</p><p>Você sempre parece enxergar TUDO. É impressionante.</p><p>E talvez seja por isso que você tenha conseguido me ler tão bem.</p></div><div class="reading" id="reading-amantes"><h3>VI — OS AMANTES</h3><p>Essa provavelmente nem precisa de explicação KKKKK.</p><p>Algumas cartas falam por si.</p></div><div class="reading" id="reading-justica"><h3>XI — A JUSTIÇA</h3><p>Essa eu não poderia deixar de colocar.</p><p>É uma carta que eu lembro de você falando quando começou a tirar cartas para mim.</p><p>Você dizia que a justiça seria feita com certas pessoas.</p><p>E até hoje quando penso nessa carta, eu lembro de você.</p><p><span class="classification">JUSTIÇA // CODINOME DETECTADO // CARTA PESSOAL</span></p></div><div class="reading show" id="reading-final"><div class="divider"></div><div class="final-note">> LEITURA CONCLUÍDA.
+<div class="tiny">
+AUDIO DATABASE // 06 FILES FOUND
+</div>
+
+<div class="audio-grid">
+
+
+<article class="audio-card" data-audio="1">
+
+<div class="audio-head">
+<span>AUDIO LOG // 01</span>
+<span class="status">CLASSIFIED</span>
+</div>
+
+<h3>Piscininha Amor</h3>
+
+<div class="artist">
+Whadi Gama
+</div>
+
+<div class="reveal">
+
+<div class="classification">
+CLASSIFICATION: PIADA INTERNA
+</div>
+
+<p>
+Essa não faria sentido para quase ninguém.
+Para nós, felizmente, faz KKKKK.
+</p>
+
+<a
+class="btn"
+target="_blank"
+rel="noopener"
+href="https://open.spotify.com/track/4Da1U4No5kamKMoJ82RGan?si=6lCfBhAKRmqkzqK5s3pizA&utm_source=copy-link"
+>
+▶ OUVIR NO SPOTIFY
+</a>
+
+</div>
+
+<button class="btn reveal-btn" onclick="revealAudio(1)">
+[ REVELAR ]
+</button>
+
+</article>
+
+
+<article class="audio-card" data-audio="2">
+
+<div class="audio-head">
+<span>AUDIO LOG // 02</span>
+<span class="status">CLASSIFIED</span>
+</div>
+
+<h3>Deusa</h3>
+
+<div class="artist">
+Venere Vai Venus
+</div>
+
+<div class="reveal">
+
+<div class="classification">
+CLASSIFICATION: DEDICATÓRIA
+</div>
+
+<p>
+Essa aqui é para você. Simplesmente porque é.
+</p>
+
+<a
+class="btn"
+target="_blank"
+rel="noopener"
+href="https://open.spotify.com/track/4vUPHEnXmCtcl0ZRnlQwaJ?si=gSFOJOT2QNu38IlGU2tlYQ&utm_source=copy-link"
+>
+▶ OUVIR NO SPOTIFY
+</a>
+
+</div>
+
+<button class="btn reveal-btn" onclick="revealAudio(2)">
+[ REVELAR ]
+</button>
+
+</article>
+
+
+<article class="audio-card" data-audio="3">
+
+<div class="audio-head">
+<span>AUDIO LOG // 03</span>
+<span class="status">CLASSIFIED</span>
+</div>
+
+<h3>Já que Me Ensinou a Beber</h3>
+
+<div class="artist">
+Os Barões da Pisadinha
+</div>
+
+<div class="reveal">
+
+<div class="classification">
+CLASSIFICATION: PIADA + EVIDÊNCIA
+</div>
+
+<p>
+Pensei nessa porque você que me fez começar a beber um icezinho.
+A responsabilidade é sua.
+</p>
+
+<a
+class="btn"
+target="_blank"
+rel="noopener"
+href="https://open.spotify.com/track/6nWPzkaAjRdjAGSFhpGc3O?si=jGZR2PjGQZuABtUFbiih0g&utm_source=copy-link"
+>
+▶ OUVIR NO SPOTIFY
+</a>
+
+</div>
+
+<button class="btn reveal-btn" onclick="revealAudio(3)">
+[ REVELAR ]
+</button>
+
+</article>
+
+
+<article class="audio-card" data-audio="4">
+
+<div class="audio-head">
+<span>AUDIO LOG // 04</span>
+<span class="status">CLASSIFIED</span>
+</div>
+
+<h3>Pensamentos Intrusivos</h3>
+
+<div class="artist">
+Ebony
+</div>
+
+<div class="reveal">
+
+<div class="classification">
+CLASSIFICATION: PERFIL IDENTIFICADO
+</div>
+
+<p>
+Não precisei pensar muito.
+É a sua cara.
+O sistema analisou e decidiu que eu estava certa.
+</p>
+
+<a
+class="btn"
+target="_blank"
+rel="noopener"
+href="https://open.spotify.com/track/7kWt0FtRDglVrRGjOxougB?si=csX5kKtqSj-1ENJ1rA0gOA&utm_source=copy-link"
+>
+▶ OUVIR NO SPOTIFY
+</a>
+
+</div>
+
+<button class="btn reveal-btn" onclick="revealAudio(4)">
+[ REVELAR ]
+</button>
+
+</article>
+
+
+<article class="audio-card" data-audio="5">
+
+<div class="audio-head">
+<span>AUDIO LOG // 05</span>
+<span class="status">CLASSIFIED</span>
+</div>
+
+<h3>Pegasus Fantasy</h3>
+
+<div class="artist">
+Edu Falaschi
+</div>
+
+<div class="reveal">
+
+<div class="classification">
+CLASSIFICATION: REFERÊNCIA DETECTADA
+</div>
+
+<p>
+Saint Seiya.
+Preciso dizer mais alguma coisa? KKKKK.
+</p>
+
+<a
+class="btn"
+target="_blank"
+rel="noopener"
+href="https://open.spotify.com/track/5ljfOnPqCGc6iXqdIE0eN7?si=f5A_AsvXQDaReSniLFY7uA&utm_source=copy-link"
+>
+▶ OUVIR NO SPOTIFY
+</a>
+
+</div>
+
+<button class="btn reveal-btn" onclick="revealAudio(5)">
+[ REVELAR ]
+</button>
+
+</article>
+
+
+<article class="audio-card" data-audio="6">
+
+<div class="audio-head">
+<span>AUDIO LOG // 06</span>
+<span class="status">CLASSIFIED</span>
+</div>
+
+<h3>Heróis Digitais</h3>
+
+<div class="artist">
+Miura Jam BR
+</div>
+
+<div class="reveal">
+
+<div class="classification">
+CLASSIFICATION: REFERÊNCIA DETECTADA
+</div>
+
+<p>
+Temos bom gosto, como pode?
+</p>
+
+<a
+class="btn"
+target="_blank"
+rel="noopener"
+href="https://open.spotify.com/track/4lFtFrnUoHUP6AQOV8U4Io?si=crAEs74DTk-PFFHNkYuSPQ&utm_source=copy-link"
+>
+▶ OUVIR NO SPOTIFY
+</a>
+
+</div>
+
+<button class="btn reveal-btn" onclick="revealAudio(6)">
+[ REVELAR ]
+</button>
+
+</article>
+
+</div>
+
+<div class="divider"></div>
+
+<button
+class="btn secondary"
+onclick="goTo('screen-dashboard')"
+>
+← Voltar
+</button>
+
+</div>
+
+</section>
+
+
+<!-- FOTOS -->
+
+<section class="screen" id="screen-fotos">
+
+<div class="panel">
+
+<div class="tiny">
+/arquivo_02/memoria_visual.dat // IMAGE DATABASE
+</div>
+
+<h2>EVIDÊNCIAS</h2>
+
+<p class="lead">
+Alguns registros foram considerados importantes demais.
+</p>
+
+<div class="gallery">
+
+
+<button
+class="photo-card"
+onclick="openLightbox('223788.jpg')"
+>
+
+<img
+src="223788.jpg"
+alt="Print de conversa"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 01</strong>
+
+<span>
+Um pequeno histórico de provas de que o nome Lavinia/Lavi aparece mais vezes do que deveria KKKKK.
+</span>
+
+</div>
+
+</button>
+
+
+<button
+class="photo-card"
+onclick="openLightbox('223786.jpg')"
+>
+
+<img
+src="223786.jpg"
+alt="Print de conversa"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 02</strong>
+
+<span>
+Mais uma busca extremamente científica no arquivo.
+</span>
+
+</div>
+
+</button>
+
+
+<button
+class="photo-card"
+onclick="openLightbox('224047.jpg')"
+>
+
+<img
+src="224047.jpg"
+alt="Ilustração inspirada em Saint Seiya"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 03</strong>
+
+<span>
+Nosso encontro uns tempos atrás, ficamos incríveis de armadura dourada, inspirada naquela foto dos nossos antepassados.
+</span>
+
+</div>
+
+</button>
+
+
+<button
+class="photo-card"
+onclick="openLightbox('221917.jpg')"
+>
+
+<img
+src="221917.jpg"
+alt="Ilustração inspirada em Saint Seiya"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 04</strong>
+
+<span>
+Essa.
+</span>
+
+</div>
+
+</button>
+
+
+<button
+class="photo-card"
+onclick="openLightbox('Screenshot_20240421_211119_Discord.jpg')"
+>
+
+<img
+src="Screenshot_20240421_211119_Discord.jpg"
+alt="Print de conversa no Discord"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 05</strong>
+
+<span>
+Linda. TE AMO.
+</span>
+
+</div>
+
+</button>
+
+
+<button
+class="photo-card"
+onclick="openLightbox('221904.jpg')"
+>
+
+<img
+src="221904.jpg"
+alt="Registro de Saint Seiya"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 06</strong>
+
+<span>
+Evidência de que Saint Seiya ocupa um espaço considerável no nosso coração.
+</span>
+
+</div>
+
+</button>
+
+
+<button
+class="photo-card"
+onclick="openLightbox('6141.jpg')"
+>
+
+<img
+src="6141.jpg"
+alt="Print de conversa"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 07</strong>
+
+<span>
+Minha alma gêmea.
+</span>
+
+</div>
+
+</button>
+
+
+<button
+class="photo-card"
+onclick="openLightbox('6142.jpg')"
+>
+
+<img
+src="6142.jpg"
+alt="Print de conversa"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 09</strong>
+
+<span>
+EU TAMBÉM TE AMOOO😭
+</span>
+
+</div>
+
+</button>
+
+
+<button
+class="photo-card"
+onclick="openLightbox('223784.jpg')"
+>
+
+<img
+src="223784.jpg"
+alt="Print de conversa"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 10</strong>
+
+<span>
+Cumplicidade né?
+E um toque de falta de noção.
+</span>
+
+</div>
+
+</button>
+
+
+<button
+class="photo-card"
+onclick="openLightbox('mclavislacre.png')"
+>
+
+<img
+src="mclavislacre.png"
+alt="Registro visual"
+>
+
+<div class="caption">
+
+<strong>REGISTRO // 11</strong>
+
+<span>
+Uma última evidência.
+Sem contexto.
+Porque algumas coisas ficam melhores assim.
+</span>
+
+</div>
+
+</button>
+
+</div>
+
+<div class="divider"></div>
+
+<button
+class="btn secondary"
+onclick="goTo('screen-dashboard')"
+>
+← Voltar
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PERGUNTA -->
+
+<section class="screen" id="screen-question">
+
+<div class="panel question">
+
+<div class="tiny">
+/arquivo_03/questionario.exe
+</div>
+
+<h2>
+Uma pergunta importante.
+</h2>
+
+<p class="lead">
+Lavi, você me ama?
+</p>
+
+<div
+class="choice-area"
+id="choiceArea"
+>
+
+<button
+class="btn yes"
+id="yesBtn"
+onclick="yesAnswer()"
+>
+SIM
+</button>
+
+<button
+class="btn danger no"
+id="noBtn"
+onclick="runAway()"
+>
+NÃO
+</button>
+
+</div>
+
+<div
+class="hint"
+id="questionHint"
+>
+Escolha com sabedoria🙂‍↔️
+</div>
+
+<div
+class="success"
+id="questionSuccess"
+>
+
+<div class="tiny">
+> RESPOSTA REGISTRADA
+</div>
+
+<h3>SIM.</h3>
+
+<p>
+Eu sabia.
+Não tinha nem graça perguntar. KKKKK.
+</p>
+
+<button
+class="btn"
+onclick="unlockSecret()"
+>
+[ CONTINUAR ]
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SECRET -->
+
+<section class="screen" id="screen-secret">
+
+<div class="panel secret">
+
+<div class="tiny">
+/???/SECRET.exe // TOP SECRET
+</div>
+
+<h2>
+O QUE ESTAVA ESCRITO
+</h2>
+
+<p class="lead">
+Há uma última coisa aqui.
+</p>
+
+<div class="divider"></div>
+
+<p>
+Foram encontradas três cartas.
+</p>
+
+<p>
+<strong>Vire uma por vez.</strong>
+</p>
+
+
+<div class="tarot-grid">
+
+
+<button
+class="tarot-card"
+onclick="flipTarot(this,'sacerdotisa')"
+>
+
+<span class="back">
+CARTA // 01
+</span>
+
+<span class="face">
+
+<div class="card-symbol">
+☾
+</div>
+
+<strong>
+II — A SACERDOTISA
+</strong>
+
+<br>
+
+<span class="tiny">
+INTUIÇÃO · SABEDORIA · MISTÉRIO
+</span>
+
+</span>
+
+</button>
+
+
+<button
+class="tarot-card"
+onclick="flipTarot(this,'amantes')"
+>
+
+<span class="back">
+CARTA // 02
+</span>
+
+<span class="face">
+
+<div class="card-symbol">
+♡
+</div>
+
+<strong>
+VI — OS AMANTES
+</strong>
+
+<br>
+
+<span class="tiny">
+CONEXÃO · ESCOLHA · RECIPROCIDADE
+</span>
+
+</span>
+
+</button>
+
+
+<button
+class="tarot-card"
+onclick="flipTarot(this,'justica')"
+>
+
+<span class="back">
+CARTA // 03
+</span>
+
+<span class="face">
+
+<div class="card-symbol">
+⚖
+</div>
+
+<strong>
+XI — A JUSTIÇA
+</strong>
+
+<br>
+
+<span class="tiny">
+VERDADE · EQUILÍBRIO · CONSEQUÊNCIA
+</span>
+
+</span>
+
+</button>
+
+</div>
+
+
+<div
+class="reading"
+id="reading-sacerdotisa"
+>
+
+<h3>
+II — A SACERDOTISA
+</h3>
+
+<p>
+Talvez essa seja a carta que mais me lembra você.
+</p>
+
+<p>
+Você sempre parece enxergar TUDO.
+É impressionante.
+</p>
+
+<p>
+E talvez seja por isso que você tenha conseguido me ler tão bem.
+</p>
+
+</div>
+
+
+<div
+class="reading"
+id="reading-amantes"
+>
+
+<h3>
+VI — OS AMANTES
+</h3>
+
+<p>
+Essa provavelmente nem precisa de explicação KKKKK.
+</p>
+
+<p>
+Algumas cartas falam por si.
+</p>
+
+</div>
+
+
+<div
+class="reading"
+id="reading-justica"
+>
+
+<h3>
+XI — A JUSTIÇA
+</h3>
+
+<p>
+Essa eu não poderia deixar de colocar.
+</p>
+
+<p>
+É uma carta que eu lembro de você falando quando começou a tirar cartas para mim.
+</p>
+
+<p>
+Você dizia que a justiça seria feita com certas pessoas.
+</p>
+
+<p>
+E até hoje quando penso nessa carta,
+eu lembro de você.
+</p>
+
+<p>
+<span class="classification">
+JUSTIÇA // CODINOME DETECTADO // CARTA PESSOAL
+</span>
+</p>
+
+</div>
+
+
+<div
+class="reading show"
+id="reading-final"
+>
+
+<div class="divider"></div>
+
+<div class="final-note">
+
+> LEITURA CONCLUÍDA.
 
 Então..
 
@@ -134,9 +1832,62 @@ E por todas as outras coisas também.
 
 Agora pode continuar.
 
-O sistema ainda tem algumas acusações contra você. KKKKK</div><br><button class="btn" onclick="showFinalReport()">[ ABRIR RELATÓRIO FINAL ]</button></div><div class="divider"></div><button class="btn secondary" onclick="goTo('screen-dashboard')">← Voltar</button></div></section>
+O sistema ainda tem algumas acusações contra você. KKKKK
 
-<section class="screen" id="screen-report"><div class="panel report"><div class="tiny">FINAL REPORT // CLASSIFICATION: TOP SECRET</div><h2>SECRET DATA UNLOCKED</h2><p>Parabéns. Você encontrou o arquivo secreto.</p><p>Infelizmente, agora eu tenho acesso a informações que comprometem sua reputação.</p><div class="letter">• músicas questionáveis
+</div>
+
+<br>
+
+<button
+class="btn"
+onclick="showFinalReport()"
+>
+[ ABRIR RELATÓRIO FINAL ]
+</button>
+
+</div>
+
+
+<div class="divider"></div>
+
+<button
+class="btn secondary"
+onclick="goTo('screen-dashboard')"
+>
+← Voltar
+</button>
+
+</div>
+
+</section>
+
+
+<!-- RELATÓRIO FINAL -->
+
+<section class="screen" id="screen-report">
+
+<div class="panel report">
+
+<div class="tiny">
+FINAL REPORT // CLASSIFICATION: TOP SECRET
+</div>
+
+<h2>
+SECRET DATA UNLOCKED
+</h2>
+
+<p>
+Parabéns.
+Você encontrou o arquivo secreto.
+</p>
+
+<p>
+Infelizmente, agora eu tenho acesso a informações que comprometem sua reputação.
+</p>
+
+<div class="letter">
+
+• músicas questionáveis
 • conversas comprometedoras
 • provas de que você me ama
 • evidências de que eu também te amo
@@ -148,66 +1899,413 @@ Eu recomendo que você continue sendo minha amiga.
 
 Caso contrário, essas informações poderão ser utilizadas contra você.
 
-Feliz aniversário, Lavi. ♥︎</div><div class="divider"></div><button class="btn danger" onclick="deleteEvidence()">[ APAGAR TODAS AS EVIDÊNCIAS ]</button><div class="error" id="deleteMessage"></div></div></section>
+Feliz aniversário, Lavi. ♥︎
+
+</div>
+
+<div class="divider"></div>
+
+<button
+class="btn danger"
+onclick="deleteEvidence()"
+>
+[ APAGAR TODAS AS EVIDÊNCIAS ]
+</button>
+
+<div
+class="error"
+id="deleteMessage"
+></div>
+
+</div>
+
+</section>
+
 </main>
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)"><button class="btn close" onclick="closeLightbox(event)">FECHAR</button><img id="lightboxImg" alt="Imagem ampliada"></div>
+
+
+<!-- LIGHTBOX -->
+
+<div
+class="lightbox"
+id="lightbox"
+onclick="closeLightbox(event)"
+>
+
+<button
+class="btn close"
+onclick="closeLightbox(event)"
+>
+FECHAR
+</button>
+
+<img
+id="lightboxImg"
+alt="Imagem ampliada"
+>
+
+</div>
+
+
 <script>
-  
-const CONFIG={nome:'LAVIS',senha:'PISCININHA AMOR',ddocument.addEventListener('click',function(event){
 
-    const button=event.target.closest('button,a');
+/* CONFIGURAÇÕES */
 
-    if(!button)return;
+const CONFIG={
+nome:'LAVIS',
+senha:'PISCININHA AMOR',
+data:'31/08/2026',
+titulo:'Para Lavi ♡'
+};
 
-    createMagicStars(
-        event.clientX,
-        event.clientY,
-        16
-    );
+
+/* TROCAR DE TELA */
+
+function goTo(id){
+
+document
+.querySelectorAll('.screen')
+.forEach(s=>s.classList.remove('active'));
+
+document
+.getElementById(id)
+.classList.add('active');
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
+}
+
+
+/* LOGIN */
+
+document.getElementById('nameDisplay').value=CONFIG.nome;
+
+document
+.getElementById('passwordInput')
+.addEventListener('keydown',e=>{
+
+if(e.key==='Enter'){
+login();
+}
+
 });
 
 
-function createMagicStars(x,y,amount){
+function login(){
 
-    for(let i=0;i<amount;i++){
+const p=
+document
+.getElementById('passwordInput')
+.value
+.trim();
 
-        const star=document.createElement('span');
+const m=
+document.getElementById('loginMessage');
 
-        star.className='magic-star';
+if(p!==CONFIG.senha){
 
-        const angle=Math.random()*Math.PI*2;
-        const distance=35+Math.random()*90;
+m.textContent=
+'Código incorreto. O sistema não está impressionado.';
 
-        const moveX=Math.cos(angle)*distance;
-        const moveY=Math.sin(angle)*distance;
+return;
 
-        star.style.left=x+'px';
-        star.style.top=y+'px';
+}
 
-        star.style.setProperty('--x',moveX+'px');
-        star.style.setProperty('--y',moveY+'px');
+m.textContent='';
 
-        document.body.appendChild(star);
+document
+.getElementById('userName')
+.textContent=CONFIG.nome;
 
-        setTimeout(function(){
-            star.remove();
-        },1000);
-    }
-}ata:'31/08/2026',titulo:'Para Lavi ♡'};
-function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
-document.getElementById('nameDisplay').value=CONFIG.nome;document.getElementById('passwordInput').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
-function login(){const p=document.getElementById('passwordInput').value.trim();const m=document.getElementById('loginMessage');if(p!==CONFIG.senha){m.textContent='Código incorreto. O sistema não está impressionado.';return}m.textContent='';document.getElementById('userName').textContent=CONFIG.nome;document.getElementById('passwordInput').value='';goTo('screen-dashboard')}
-function revealAudio(n){document.querySelector(`[data-audio="${n}"]`).classList.add('open')}
-function runAway(){const b=document.getElementById('noBtn'),a=document.getElementById('choiceArea');const x=Math.max(0,a.clientWidth-b.offsetWidth),y=Math.max(0,a.clientHeight-b.offsetHeight);b.style.left=Math.round(Math.random()*x)+'px';b.style.top=Math.round(Math.random()*y)+'px';document.getElementById('questionHint').textContent=['Essa opção não está disponível. 🤨','Erro 404: opção não encontrada.','Lavinia, por favor KKKKK','VOCÊ AINDA ESTÁ TENTANDO???','Não. Você sabe que não. 🙂‍↔️'][Math.floor(Math.random()*5)]}
-function yesAnswer(){document.getElementById('choiceArea').style.display='none';document.getElementById('questionHint').style.display='none';document.getElementById('questionSuccess').classList.add('show')}
-function unlockSecret(){document.getElementById('secretFile').style.display='flex';goTo('screen-secret')}
-function flipTarot(el,key){el.classList.add('flipped');document.querySelectorAll('.reading:not(#reading-final)').forEach(r=>r.classList.remove('show'));document.getElementById('reading-'+key).classList.add('show')}
-function showFinalReport(){goTo('screen-report')}
-function openLightbox(file){document.getElementById('lightboxImg').src=file;document.getElementById('lightbox').classList.add('open')}
-function closeLightbox(e){if(e.target.id==='lightbox'||e.target.classList.contains('close'))document.getElementById('lightbox').classList.remove('open')}
-function deleteEvidence(){document.getElementById('deleteMessage').textContent='Erro: não foi, não é, nem será possível apagar🙂‍↔️'}
+document
+.getElementById('passwordInput')
+.value='';
+
+goTo('screen-dashboard');
+
+}
+
+
+/* REVELAR MÚSICA */
+
+function revealAudio(n){
+
+document
+.querySelector(`[data-audio="${n}"]`)
+.classList
+.add('open');
+
+}
+
+
+/* BOTÃO NÃO FOGE */
+
+function runAway(){
+
+const b=
+document.getElementById('noBtn');
+
+const a=
+document.getElementById('choiceArea');
+
+const x=
+Math.max(
+0,
+a.clientWidth-b.offsetWidth
+);
+
+const y=
+Math.max(
+0,
+a.clientHeight-b.offsetHeight
+);
+
+b.style.left=
+Math.round(Math.random()*x)+'px';
+
+b.style.top=
+Math.round(Math.random()*y)+'px';
+
+document
+.getElementById('questionHint')
+.textContent=
+[
+'Essa opção não está disponível. 🤨',
+'Erro 404: opção não encontrada.',
+'Lavinia, por favor KKKKK',
+'VOCÊ AINDA ESTÁ TENTANDO???',
+'Não. Você sabe que não. 🙂‍↔️'
+][
+Math.floor(
+Math.random()*5
+)
+];
+
+}
+
+
+/* RESPOSTA SIM */
+
+function yesAnswer(){
+
+document
+.getElementById('choiceArea')
+.style.display='none';
+
+document
+.getElementById('questionHint')
+.style.display='none';
+
+document
+.getElementById('questionSuccess')
+.classList
+.add('show');
+
+}
+
+
+/* LIBERAR SECRET */
+
+function unlockSecret(){
+
+document
+.getElementById('secretFile')
+.style.display='flex';
+
+goTo('screen-secret');
+
+}
+
+
+/* CARTAS DE TAROT */
+
+function flipTarot(el,key){
+
+el.classList.add('flipped');
+
+document
+.querySelectorAll('.reading:not(#reading-final)')
+.forEach(r=>r.classList.remove('show'));
+
+document
+.getElementById('reading-'+key)
+.classList.add('show');
+
+}
+
+
+/* RELATÓRIO */
+
+function showFinalReport(){
+
+goTo('screen-report');
+
+}
+
+
+/* LIGHTBOX */
+
+function openLightbox(file){
+
+document
+.getElementById('lightboxImg')
+.src=file;
+
+document
+.getElementById('lightbox')
+.classList
+.add('open');
+
+}
+
+
+function closeLightbox(e){
+
+if(
+e.target.id==='lightbox' ||
+e.target.classList.contains('close')
+){
+
+document
+.getElementById('lightbox')
+.classList
+.remove('open');
+
+}
+
+}
+
+
+/* APAGAR EVIDÊNCIAS */
+
+function deleteEvidence(){
+
+document
+.getElementById('deleteMessage')
+.textContent=
+'Erro: não foi, não é, nem será possível apagar🙂‍↔️';
+
+}
+
+
+/* ✦✦✦ ESTRELAS MÁGICAS ✦✦✦ */
+
+/*
+   Toda vez que qualquer botão for clicado,
+   o site cria pequenas estrelas ao redor dele.
+*/
+
+document.addEventListener('click',function(e){
+
+const botao=e.target.closest('button');
+
+if(!botao)return;
+
+criarEstrelas(botao);
+
+});
+
+
+function criarEstrelas(botao){
+
+const quantidade=14;
+
+const rect=
+botao.getBoundingClientRect();
+
+for(let i=0;i<quantidade;i++){
+
+const estrela=
+document.createElement('span');
+
+estrela.className='magic-star';
+
+
+/* formatos diferentes */
+
+estrela.innerHTML=
+['✦','✧','⋆','★']
+[
+Math.floor(
+Math.random()*4
+)
+];
+
+
+/* posição inicial */
+
+const x=
+rect.left+
+rect.width/2;
+
+const y=
+rect.top+
+rect.height/2;
+
+estrela.style.left=x+'px';
+estrela.style.top=y+'px';
+
+
+/* direção aleatória */
+
+const angulo=
+Math.random()*
+Math.PI*
+2;
+
+const distancia=
+35+
+Math.random()*80;
+
+
+estrela.style.setProperty(
+'--x',
+Math.cos(angulo)*
+distancia+
+'px'
+);
+
+estrela.style.setProperty(
+'--y',
+Math.sin(angulo)*
+distancia+
+'px'
+);
+
+
+/* atraso aleatório */
+
+estrela.style.setProperty(
+'--delay',
+Math.random()*
+0.15+
+'s'
+);
+
+
+/* colocar na página */
+
+document
+.body
+.appendChild(estrela);
+
+
+/* remover depois da animação */
+
+setTimeout(()=>{
+
+estrela.remove();
+
+},1000);
+
+}
+
+}
+
 </script>
+
 </body>
-</html>
-
-
+    </html>
