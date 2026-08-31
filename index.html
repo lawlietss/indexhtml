@@ -38,16 +38,10 @@ body:before{
 content:"";
 position:fixed;
 inset:0;
-background:linear-gradient(
-180deg,
-rgba(20,4,15,.28),
-rgba(17,4,14,.72)
-);
+background:linear-gradient(180deg,rgba(20,4,15,.28),rgba(17,4,14,.72));
 pointer-events:none;
 z-index:-1
 }
-
-/* ESTRELAS DO FUNDO */
 
 .stars{
 position:fixed;
@@ -67,41 +61,12 @@ box-shadow:0 0 10px #fff;
 animation:twinkle 3s ease-in-out infinite
 }
 
-.star:nth-child(1){
-left:12%;
-top:18%;
-animation-delay:.2s
-}
-
-.star:nth-child(2){
-left:78%;
-top:12%;
-animation-delay:1s
-}
-
-.star:nth-child(3){
-left:62%;
-top:37%;
-animation-delay:1.8s
-}
-
-.star:nth-child(4){
-left:23%;
-top:63%;
-animation-delay:.8s
-}
-
-.star:nth-child(5){
-left:86%;
-top:74%;
-animation-delay:2.1s
-}
-
-.star:nth-child(6){
-left:47%;
-top:82%;
-animation-delay:1.4s
-}
+.star:nth-child(1){left:12%;top:18%;animation-delay:.2s}
+.star:nth-child(2){left:78%;top:12%;animation-delay:1s}
+.star:nth-child(3){left:62%;top:37%;animation-delay:1.8s}
+.star:nth-child(4){left:23%;top:63%;animation-delay:.8s}
+.star:nth-child(5){left:86%;top:74%;animation-delay:2.1s}
+.star:nth-child(6){left:47%;top:82%;animation-delay:1.4s}
 
 @keyframes twinkle{
 50%{
@@ -109,6 +74,72 @@ opacity:.2;
 transform:scale(.55)
 }
 }
+
+/* =========================================
+   ✦ ESTRELAS DOS CLIQUES ✦
+   ========================================= */
+
+.click-star{
+position:fixed;
+width:6px;
+height:6px;
+border-radius:50%;
+background:#fff;
+pointer-events:none;
+z-index:9999;
+
+box-shadow:
+0 0 6px #fff,
+0 0 14px var(--rose),
+0 0 22px var(--gold);
+
+animation:starBurst .8s ease-out forwards
+}
+
+@keyframes starBurst{
+
+0%{
+opacity:1;
+transform:
+translate(-50%,-50%)
+scale(.4)
+rotate(0deg)
+}
+
+60%{
+opacity:1
+}
+
+100%{
+opacity:0;
+transform:
+translate(
+calc(-50% + var(--x)),
+calc(-50% + var(--y))
+)
+scale(0)
+rotate(180deg)
+}
+
+}
+
+/* ✦ pequena estrela em formato de brilho ✦ */
+
+.click-star:after{
+content:"✦";
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+font-size:10px;
+color:#fff;
+text-shadow:
+0 0 5px #fff,
+0 0 10px var(--gold)
+}
+
+
+/* ========================================= */
 
 .app{
 width:min(980px,92vw);
@@ -239,8 +270,6 @@ color:#f2b5c7
 text-align:center
 }
 
-/* TELA INICIAL */
-
 .boot{
 text-align:center;
 padding:clamp(35px,8vw,80px) 20px
@@ -274,8 +303,6 @@ background:rgba(0,0,0,.2);
 font:12px/2 "Courier New",monospace;
 color:#d8c7cf
 }
-
-/* LOGIN */
 
 .field{
 margin:18px 0
@@ -311,8 +338,6 @@ color:#efafc1;
 font:11px "Courier New",monospace;
 margin-top:10px
 }
-
-/* ARQUIVOS */
 
 .file-grid{
 display:grid;
@@ -356,8 +381,6 @@ color:var(--muted);
 font:10px "Courier New",monospace
 }
 
-/* CARTA */
-
 .letter{
 white-space:pre-line;
 border:1px solid var(--line);
@@ -368,8 +391,6 @@ font-size:16px;
 line-height:2;
 color:#f1e5ea
 }
-
-/* MÚSICAS */
 
 .audio-grid{
 display:grid;
@@ -422,8 +443,6 @@ color:var(--gold);
 font-size:10px
 }
 
-/* GALERIA */
-
 .gallery{
 display:grid;
 grid-template-columns:repeat(2,minmax(0,1fr));
@@ -473,8 +492,6 @@ line-height:1.55;
 color:#d9c8cf
 }
 
-/* LIGHTBOX */
-
 .lightbox{
 position:fixed;
 inset:0;
@@ -502,8 +519,6 @@ position:absolute;
 top:18px;
 right:18px
 }
-
-/* PERGUNTA */
 
 .question{
 text-align:center
@@ -547,8 +562,6 @@ padding:24px
 display:block
 }
 
-/* TAROT */
-
 .secret{
 background:rgba(13,2,12,.82);
 border-color:rgba(228,189,139,.28)
@@ -566,11 +579,7 @@ min-height:290px;
 border:1px solid rgba(228,189,139,.35);
 border-radius:18px;
 background:
-radial-gradient(
-circle at 50% 25%,
-rgba(228,189,139,.12),
-transparent 32%
-),
+radial-gradient(circle at 50% 25%,rgba(228,189,139,.12),transparent 32%),
 linear-gradient(145deg,#2a0d23,#10030e);
 color:var(--rose2);
 cursor:pointer;
@@ -578,8 +587,7 @@ position:relative;
 overflow:hidden;
 padding:18px;
 transition:.35s;
-box-shadow:
-inset 0 0 0 7px rgba(228,189,139,.035)
+box-shadow:inset 0 0 0 7px rgba(228,189,139,.035)
 }
 
 .tarot-card:hover{
@@ -655,56 +663,6 @@ color:#eadde3
 border-color:rgba(228,189,139,.25)
 }
 
-/* ✦ ESTRELAS MÁGICAS DOS BOTÕES ✦ */
-
-.magic-star{
-position:fixed;
-z-index:9999;
-pointer-events:none;
-color:#e4bd8b;
-font-size:18px;
-text-shadow:
-0 0 5px #fff,
-0 0 12px #e4bd8b,
-0 0 22px rgba(228,189,139,.8);
-transform:translate(-50%,-50%) scale(.3);
-animation:magicStar 1s ease-out forwards;
-animation-delay:var(--delay)
-}
-
-@keyframes magicStar{
-
-0%{
-opacity:0;
-transform:
-translate(-50%,-50%)
-translate(0,0)
-scale(.2)
-rotate(0deg)
-}
-
-20%{
-opacity:1;
-transform:
-translate(-50%,-50%)
-translate(0,0)
-scale(1.2)
-rotate(45deg)
-}
-
-100%{
-opacity:0;
-transform:
-translate(-50%,-50%)
-translate(var(--x),var(--y))
-scale(.15)
-rotate(180deg)
-}
-
-}
-
-/* MOBILE */
-
 @media(max-width:700px){
 
 .audio-grid,
@@ -751,7 +709,9 @@ left:55%
 
 <main class="app">
 
-<!-- TELA INICIAL -->
+<!-- =========================================
+     TELA INICIAL
+     ========================================= -->
 
 <section class="screen active" id="screen-boot">
 
@@ -759,7 +719,9 @@ left:55%
 
 <div class="moon">☾</div>
 
-<div class="tiny">BIRTHDAY PROTOCOL // 01</div>
+<div class="tiny">
+BIRTHDAY PROTOCOL // 01
+</div>
 
 <h1>
 Para você,<br>
@@ -784,19 +746,24 @@ Isso é o suficiente pra entender sua importância.
 </button>
 
 </div>
-
 </section>
 
 
-<!-- LOGIN -->
+<!-- =========================================
+     LOGIN
+     ========================================= -->
 
 <section class="screen" id="screen-login">
 
 <div class="panel">
 
-<div class="tiny">ACCESS // RESTRICTED</div>
+<div class="tiny">
+ACCESS // RESTRICTED
+</div>
 
-<h2>Antes de entrar...</h2>
+<h2>
+Antes de entrar...
+</h2>
 
 <p class="lead">
 Só uma pessoa deveria ter acesso a isso.
@@ -804,7 +771,9 @@ Só uma pessoa deveria ter acesso a isso.
 
 <div class="field">
 
-<label>IDENTIFICAÇÃO</label>
+<label>
+IDENTIFICAÇÃO
+</label>
 
 <input id="nameDisplay" readonly>
 
@@ -812,7 +781,9 @@ Só uma pessoa deveria ter acesso a isso.
 
 <div class="field">
 
-<label>CÓDIGO DE ACESSO</label>
+<label>
+CÓDIGO DE ACESSO
+</label>
 
 <input
 id="passwordInput"
@@ -830,11 +801,12 @@ autocomplete="off"
 <div class="error" id="loginMessage"></div>
 
 </div>
-
 </section>
 
 
-<!-- DASHBOARD -->
+<!-- =========================================
+     DASHBOARD
+     ========================================= -->
 
 <section class="screen" id="screen-dashboard">
 
@@ -859,6 +831,7 @@ porque eu passei tempo demais fazendo isso para você ignorar algum visse
 <article class="file-card">
 
 <div>
+
 <div class="file-name">
 /arquivo_01/memorias.dat
 </div>
@@ -866,6 +839,7 @@ porque eu passei tempo demais fazendo isso para você ignorar algum visse
 <div class="locked">
 STATUS: DISPONÍVEL
 </div>
+
 </div>
 
 <button class="btn" onclick="goTo('screen-memorias')">
@@ -878,6 +852,7 @@ Abrir
 <article class="file-card">
 
 <div>
+
 <div class="file-name">
 /arquivo_02/memoria_visual.dat
 </div>
@@ -885,6 +860,7 @@ Abrir
 <div class="locked">
 STATUS: DISPONÍVEL
 </div>
+
 </div>
 
 <button class="btn" onclick="goTo('screen-fotos')">
@@ -897,6 +873,7 @@ Abrir
 <article class="file-card">
 
 <div>
+
 <div class="file-name">
 /arquivo_03/questionario.exe
 </div>
@@ -904,6 +881,7 @@ Abrir
 <div class="locked">
 STATUS: DISPONÍVEL
 </div>
+
 </div>
 
 <button class="btn" onclick="goTo('screen-question')">
@@ -913,11 +891,7 @@ Abrir
 </article>
 
 
-<article
-class="file-card"
-id="secretFile"
-style="display:none"
->
+<article class="file-card" id="secretFile" style="display:none">
 
 <div>
 
@@ -944,11 +918,12 @@ Acessar
 </div>
 
 </div>
-
 </section>
 
 
-<!-- MEMÓRIAS -->
+<!-- =========================================
+     MEMÓRIAS
+     ========================================= -->
 
 <section class="screen" id="screen-memorias">
 
@@ -958,7 +933,9 @@ Acessar
 /arquivo_01/memorias.dat // DECRYPTED
 </div>
 
-<h2>MEMÓRIAS</h2>
+<h2>
+MEMÓRIAS
+</h2>
 
 <div class="letter">
 
@@ -985,6 +962,8 @@ AUDIO DATABASE // 06 FILES FOUND
 <div class="audio-grid">
 
 
+<!-- AUDIO 01 -->
+
 <article class="audio-card" data-audio="1">
 
 <div class="audio-head">
@@ -992,7 +971,9 @@ AUDIO DATABASE // 06 FILES FOUND
 <span class="status">CLASSIFIED</span>
 </div>
 
-<h3>Piscininha Amor</h3>
+<h3>
+Piscininha Amor
+</h3>
 
 <div class="artist">
 Whadi Gama
@@ -1013,8 +994,7 @@ Para nós, felizmente, faz KKKKK.
 class="btn"
 target="_blank"
 rel="noopener"
-href="https://open.spotify.com/track/4Da1U4No5kamKMoJ82RGan?si=6lCfBhAKRmqkzqK5s3pizA&utm_source=copy-link"
->
+href="https://open.spotify.com/track/4Da1U4No5kamKMoJ82RGan?si=6lCfBhAKRmqkzqK5s3pizA&utm_source=copy-link">
 ▶ OUVIR NO SPOTIFY
 </a>
 
@@ -1027,6 +1007,8 @@ href="https://open.spotify.com/track/4Da1U4No5kamKMoJ82RGan?si=6lCfBhAKRmqkzqK5s
 </article>
 
 
+<!-- AUDIO 02 -->
+
 <article class="audio-card" data-audio="2">
 
 <div class="audio-head">
@@ -1034,7 +1016,9 @@ href="https://open.spotify.com/track/4Da1U4No5kamKMoJ82RGan?si=6lCfBhAKRmqkzqK5s
 <span class="status">CLASSIFIED</span>
 </div>
 
-<h3>Deusa</h3>
+<h3>
+Deusa
+</h3>
 
 <div class="artist">
 Venere Vai Venus
@@ -1047,15 +1031,15 @@ CLASSIFICATION: DEDICATÓRIA
 </div>
 
 <p>
-Essa aqui é para você. Simplesmente porque é.
+Essa aqui é para você.
+Simplesmente porque é.
 </p>
 
 <a
 class="btn"
 target="_blank"
 rel="noopener"
-href="https://open.spotify.com/track/4vUPHEnXmCtcl0ZRnlQwaJ?si=gSFOJOT2QNu38IlGU2tlYQ&utm_source=copy-link"
->
+href="https://open.spotify.com/track/4vUPHEnXmCtcl0ZRnlQwaJ?si=gSFOJOT2QNu38IlGU2tlYQ&utm_source=copy-link">
 ▶ OUVIR NO SPOTIFY
 </a>
 
@@ -1068,6 +1052,8 @@ href="https://open.spotify.com/track/4vUPHEnXmCtcl0ZRnlQwaJ?si=gSFOJOT2QNu38IlGU
 </article>
 
 
+<!-- AUDIO 03 -->
+
 <article class="audio-card" data-audio="3">
 
 <div class="audio-head">
@@ -1075,7 +1061,9 @@ href="https://open.spotify.com/track/4vUPHEnXmCtcl0ZRnlQwaJ?si=gSFOJOT2QNu38IlGU
 <span class="status">CLASSIFIED</span>
 </div>
 
-<h3>Já que Me Ensinou a Beber</h3>
+<h3>
+Já que Me Ensinou a Beber
+</h3>
 
 <div class="artist">
 Os Barões da Pisadinha
@@ -1088,16 +1076,15 @@ CLASSIFICATION: PIADA + EVIDÊNCIA
 </div>
 
 <p>
-Pensei nessa porque você que me fez começar a beber um icezinho.
-A responsabilidade é sua.
+Pensei nessa porque você que me fez começar
+a beber um icezinho. A responsabilidade é sua.
 </p>
 
 <a
 class="btn"
 target="_blank"
 rel="noopener"
-href="https://open.spotify.com/track/6nWPzkaAjRdjAGSFhpGc3O?si=jGZR2PjGQZuABtUFbiih0g&utm_source=copy-link"
->
+href="https://open.spotify.com/track/6nWPzkaAjRdjAGSFhpGc3O?si=jGZR2PjGQZuABtUFbiih0g&utm_source=copy-link">
 ▶ OUVIR NO SPOTIFY
 </a>
 
@@ -1110,6 +1097,8 @@ href="https://open.spotify.com/track/6nWPzkaAjRdjAGSFhpGc3O?si=jGZR2PjGQZuABtUFb
 </article>
 
 
+<!-- AUDIO 04 -->
+
 <article class="audio-card" data-audio="4">
 
 <div class="audio-head">
@@ -1117,7 +1106,9 @@ href="https://open.spotify.com/track/6nWPzkaAjRdjAGSFhpGc3O?si=jGZR2PjGQZuABtUFb
 <span class="status">CLASSIFIED</span>
 </div>
 
-<h3>Pensamentos Intrusivos</h3>
+<h3>
+Pensamentos Intrusivos
+</h3>
 
 <div class="artist">
 Ebony
@@ -1131,16 +1122,15 @@ CLASSIFICATION: PERFIL IDENTIFICADO
 
 <p>
 Não precisei pensar muito.
-É a sua cara.
-O sistema analisou e decidiu que eu estava certa.
+É a sua cara. O sistema analisou
+e decidiu que eu estava certa.
 </p>
 
 <a
 class="btn"
 target="_blank"
 rel="noopener"
-href="https://open.spotify.com/track/7kWt0FtRDglVrRGjOxougB?si=csX5kKtqSj-1ENJ1rA0gOA&utm_source=copy-link"
->
+href="https://open.spotify.com/track/7kWt0FtRDglVrRGjOxougB?si=csX5kKtqSj-1ENJ1rA0gOA&utm_source=copy-link">
 ▶ OUVIR NO SPOTIFY
 </a>
 
@@ -1153,6 +1143,8 @@ href="https://open.spotify.com/track/7kWt0FtRDglVrRGjOxougB?si=csX5kKtqSj-1ENJ1r
 </article>
 
 
+<!-- AUDIO 05 -->
+
 <article class="audio-card" data-audio="5">
 
 <div class="audio-head">
@@ -1160,7 +1152,9 @@ href="https://open.spotify.com/track/7kWt0FtRDglVrRGjOxougB?si=csX5kKtqSj-1ENJ1r
 <span class="status">CLASSIFIED</span>
 </div>
 
-<h3>Pegasus Fantasy</h3>
+<h3>
+Pegasus Fantasy
+</h3>
 
 <div class="artist">
 Edu Falaschi
@@ -1181,8 +1175,7 @@ Preciso dizer mais alguma coisa? KKKKK.
 class="btn"
 target="_blank"
 rel="noopener"
-href="https://open.spotify.com/track/5ljfOnPqCGc6iXqdIE0eN7?si=f5A_AsvXQDaReSniLFY7uA&utm_source=copy-link"
->
+href="https://open.spotify.com/track/5ljfOnPqCGc6iXqdIE0eN7?si=f5A_AsvXQDaReSniLFY7uA&utm_source=copy-link">
 ▶ OUVIR NO SPOTIFY
 </a>
 
@@ -1195,6 +1188,8 @@ href="https://open.spotify.com/track/5ljfOnPqCGc6iXqdIE0eN7?si=f5A_AsvXQDaReSniL
 </article>
 
 
+<!-- AUDIO 06 -->
+
 <article class="audio-card" data-audio="6">
 
 <div class="audio-head">
@@ -1202,7 +1197,9 @@ href="https://open.spotify.com/track/5ljfOnPqCGc6iXqdIE0eN7?si=f5A_AsvXQDaReSniL
 <span class="status">CLASSIFIED</span>
 </div>
 
-<h3>Heróis Digitais</h3>
+<h3>
+Heróis Digitais
+</h3>
 
 <div class="artist">
 Miura Jam BR
@@ -1222,8 +1219,7 @@ Temos bom gosto, como pode?
 class="btn"
 target="_blank"
 rel="noopener"
-href="https://open.spotify.com/track/4lFtFrnUoHUP6AQOV8U4Io?si=crAEs74DTk-PFFHNkYuSPQ&utm_source=copy-link"
->
+href="https://open.spotify.com/track/4lFtFrnUoHUP6AQOV8U4Io?si=crAEs74DTk-PFFHNkYuSPQ&utm_source=copy-link">
 ▶ OUVIR NO SPOTIFY
 </a>
 
@@ -1239,19 +1235,17 @@ href="https://open.spotify.com/track/4lFtFrnUoHUP6AQOV8U4Io?si=crAEs74DTk-PFFHNk
 
 <div class="divider"></div>
 
-<button
-class="btn secondary"
-onclick="goTo('screen-dashboard')"
->
+<button class="btn secondary" onclick="goTo('screen-dashboard')">
 ← Voltar
 </button>
 
 </div>
-
 </section>
 
 
-<!-- FOTOS -->
+<!-- =========================================
+     FOTOS
+     ========================================= -->
 
 <section class="screen" id="screen-fotos">
 
@@ -1261,7 +1255,9 @@ onclick="goTo('screen-dashboard')"
 /arquivo_02/memoria_visual.dat // IMAGE DATABASE
 </div>
 
-<h2>EVIDÊNCIAS</h2>
+<h2>
+EVIDÊNCIAS
+</h2>
 
 <p class="lead">
 Alguns registros foram considerados importantes demais.
@@ -1270,10 +1266,7 @@ Alguns registros foram considerados importantes demais.
 <div class="gallery">
 
 
-<button
-class="photo-card"
-onclick="openLightbox('223788.jpg')"
->
+<button class="photo-card" onclick="openLightbox('223788.jpg')">
 
 <img
 src="223788.jpg"
@@ -1282,10 +1275,13 @@ alt="Print de conversa"
 
 <div class="caption">
 
-<strong>REGISTRO // 01</strong>
+<strong>
+REGISTRO // 01
+</strong>
 
 <span>
-Um pequeno histórico de provas de que o nome Lavinia/Lavi aparece mais vezes do que deveria KKKKK.
+Um pequeno histórico de provas de que o nome
+Lavinia/Lavi aparece mais vezes do que deveria KKKKK.
 </span>
 
 </div>
@@ -1293,10 +1289,7 @@ Um pequeno histórico de provas de que o nome Lavinia/Lavi aparece mais vezes do
 </button>
 
 
-<button
-class="photo-card"
-onclick="openLightbox('223786.jpg')"
->
+<button class="photo-card" onclick="openLightbox('223786.jpg')">
 
 <img
 src="223786.jpg"
@@ -1305,7 +1298,9 @@ alt="Print de conversa"
 
 <div class="caption">
 
-<strong>REGISTRO // 02</strong>
+<strong>
+REGISTRO // 02
+</strong>
 
 <span>
 Mais uma busca extremamente científica no arquivo.
@@ -1316,10 +1311,7 @@ Mais uma busca extremamente científica no arquivo.
 </button>
 
 
-<button
-class="photo-card"
-onclick="openLightbox('224047.jpg')"
->
+<button class="photo-card" onclick="openLightbox('224047.jpg')">
 
 <img
 src="224047.jpg"
@@ -1328,10 +1320,13 @@ alt="Ilustração inspirada em Saint Seiya"
 
 <div class="caption">
 
-<strong>REGISTRO // 03</strong>
+<strong>
+REGISTRO // 03
+</strong>
 
 <span>
-Nosso encontro uns tempos atrás, ficamos incríveis de armadura dourada, inspirada naquela foto dos nossos antepassados.
+Nosso encontro uns tempos atrás, ficamos incríveis
+de armadura dourada, inspirada naquela foto dos nossos antepassados.
 </span>
 
 </div>
@@ -1339,10 +1334,7 @@ Nosso encontro uns tempos atrás, ficamos incríveis de armadura dourada, inspir
 </button>
 
 
-<button
-class="photo-card"
-onclick="openLightbox('221917.jpg')"
->
+<button class="photo-card" onclick="openLightbox('221917.jpg')">
 
 <img
 src="221917.jpg"
@@ -1351,7 +1343,9 @@ alt="Ilustração inspirada em Saint Seiya"
 
 <div class="caption">
 
-<strong>REGISTRO // 04</strong>
+<strong>
+REGISTRO // 04
+</strong>
 
 <span>
 Essa.
@@ -1364,8 +1358,7 @@ Essa.
 
 <button
 class="photo-card"
-onclick="openLightbox('Screenshot_20240421_211119_Discord.jpg')"
->
+onclick="openLightbox('Screenshot_20240421_211119_Discord.jpg')">
 
 <img
 src="Screenshot_20240421_211119_Discord.jpg"
@@ -1374,7 +1367,9 @@ alt="Print de conversa no Discord"
 
 <div class="caption">
 
-<strong>REGISTRO // 05</strong>
+<strong>
+REGISTRO // 05
+</strong>
 
 <span>
 Linda. TE AMO.
@@ -1385,10 +1380,7 @@ Linda. TE AMO.
 </button>
 
 
-<button
-class="photo-card"
-onclick="openLightbox('221904.jpg')"
->
+<button class="photo-card" onclick="openLightbox('221904.jpg')">
 
 <img
 src="221904.jpg"
@@ -1397,10 +1389,13 @@ alt="Registro de Saint Seiya"
 
 <div class="caption">
 
-<strong>REGISTRO // 06</strong>
+<strong>
+REGISTRO // 06
+</strong>
 
 <span>
-Evidência de que Saint Seiya ocupa um espaço considerável no nosso coração.
+Evidência de que Saint Seiya ocupa um espaço
+considerável no nosso coração.
 </span>
 
 </div>
@@ -1408,10 +1403,7 @@ Evidência de que Saint Seiya ocupa um espaço considerável no nosso coração.
 </button>
 
 
-<button
-class="photo-card"
-onclick="openLightbox('6141.jpg')"
->
+<button class="photo-card" onclick="openLightbox('6141.jpg')">
 
 <img
 src="6141.jpg"
@@ -1420,7 +1412,9 @@ alt="Print de conversa"
 
 <div class="caption">
 
-<strong>REGISTRO // 07</strong>
+<strong>
+REGISTRO // 07
+</strong>
 
 <span>
 Minha alma gêmea.
@@ -1431,10 +1425,7 @@ Minha alma gêmea.
 </button>
 
 
-<button
-class="photo-card"
-onclick="openLightbox('6142.jpg')"
->
+<button class="photo-card" onclick="openLightbox('6142.jpg')">
 
 <img
 src="6142.jpg"
@@ -1443,7 +1434,9 @@ alt="Print de conversa"
 
 <div class="caption">
 
-<strong>REGISTRO // 09</strong>
+<strong>
+REGISTRO // 09
+</strong>
 
 <span>
 EU TAMBÉM TE AMOOO😭
@@ -1454,10 +1447,7 @@ EU TAMBÉM TE AMOOO😭
 </button>
 
 
-<button
-class="photo-card"
-onclick="openLightbox('223784.jpg')"
->
+<button class="photo-card" onclick="openLightbox('223784.jpg')">
 
 <img
 src="223784.jpg"
@@ -1466,7 +1456,9 @@ alt="Print de conversa"
 
 <div class="caption">
 
-<strong>REGISTRO // 10</strong>
+<strong>
+REGISTRO // 10
+</strong>
 
 <span>
 Cumplicidade né?
@@ -1478,10 +1470,7 @@ E um toque de falta de noção.
 </button>
 
 
-<button
-class="photo-card"
-onclick="openLightbox('mclavislacre.png')"
->
+<button class="photo-card" onclick="openLightbox('mclavislacre.png')">
 
 <img
 src="mclavislacre.png"
@@ -1490,11 +1479,12 @@ alt="Registro visual"
 
 <div class="caption">
 
-<strong>REGISTRO // 11</strong>
+<strong>
+REGISTRO // 11
+</strong>
 
 <span>
-Uma última evidência.
-Sem contexto.
+Uma última evidência. Sem contexto.
 Porque algumas coisas ficam melhores assim.
 </span>
 
@@ -1506,19 +1496,17 @@ Porque algumas coisas ficam melhores assim.
 
 <div class="divider"></div>
 
-<button
-class="btn secondary"
-onclick="goTo('screen-dashboard')"
->
+<button class="btn secondary" onclick="goTo('screen-dashboard')">
 ← Voltar
 </button>
 
 </div>
-
 </section>
 
 
-<!-- PERGUNTA -->
+<!-- =========================================
+     QUESTIONÁRIO
+     ========================================= -->
 
 <section class="screen" id="screen-question">
 
@@ -1536,67 +1524,56 @@ Uma pergunta importante.
 Lavi, você me ama?
 </p>
 
-<div
-class="choice-area"
-id="choiceArea"
->
+<div class="choice-area" id="choiceArea">
 
 <button
 class="btn yes"
 id="yesBtn"
-onclick="yesAnswer()"
->
+onclick="yesAnswer()">
 SIM
 </button>
 
 <button
 class="btn danger no"
 id="noBtn"
-onclick="runAway()"
->
+onclick="runAway()">
 NÃO
 </button>
 
 </div>
 
-<div
-class="hint"
-id="questionHint"
->
+<div class="hint" id="questionHint">
 Escolha com sabedoria🙂‍↔️
 </div>
 
-<div
-class="success"
-id="questionSuccess"
->
+<div class="success" id="questionSuccess">
 
 <div class="tiny">
 > RESPOSTA REGISTRADA
 </div>
 
-<h3>SIM.</h3>
+<h3>
+SIM.
+</h3>
 
 <p>
 Eu sabia.
 Não tinha nem graça perguntar. KKKKK.
 </p>
 
-<button
-class="btn"
-onclick="unlockSecret()"
->
+<button class="btn" onclick="unlockSecret()">
 [ CONTINUAR ]
 </button>
 
 </div>
 
 </div>
-
 </section>
 
 
-<!-- SECRET -->
+<!-- =========================================
+     SECRET
+     ========================================= -->
 
 <section class="screen" id="screen-secret">
 
@@ -1621,17 +1598,17 @@ Foram encontradas três cartas.
 </p>
 
 <p>
-<strong>Vire uma por vez.</strong>
+<strong>
+Vire uma por vez.
+</strong>
 </p>
-
 
 <div class="tarot-grid">
 
 
 <button
 class="tarot-card"
-onclick="flipTarot(this,'sacerdotisa')"
->
+onclick="flipTarot(this,'sacerdotisa')">
 
 <span class="back">
 CARTA // 01
@@ -1660,8 +1637,7 @@ INTUIÇÃO · SABEDORIA · MISTÉRIO
 
 <button
 class="tarot-card"
-onclick="flipTarot(this,'amantes')"
->
+onclick="flipTarot(this,'amantes')">
 
 <span class="back">
 CARTA // 02
@@ -1690,8 +1666,7 @@ CONEXÃO · ESCOLHA · RECIPROCIDADE
 
 <button
 class="tarot-card"
-onclick="flipTarot(this,'justica')"
->
+onclick="flipTarot(this,'justica')">
 
 <span class="back">
 CARTA // 03
@@ -1720,10 +1695,7 @@ VERDADE · EQUILÍBRIO · CONSEQUÊNCIA
 </div>
 
 
-<div
-class="reading"
-id="reading-sacerdotisa"
->
+<div class="reading" id="reading-sacerdotisa">
 
 <h3>
 II — A SACERDOTISA
@@ -1739,16 +1711,14 @@ Você sempre parece enxergar TUDO.
 </p>
 
 <p>
-E talvez seja por isso que você tenha conseguido me ler tão bem.
+E talvez seja por isso que você tenha conseguido
+me ler tão bem.
 </p>
 
 </div>
 
 
-<div
-class="reading"
-id="reading-amantes"
->
+<div class="reading" id="reading-amantes">
 
 <h3>
 VI — OS AMANTES
@@ -1765,10 +1735,7 @@ Algumas cartas falam por si.
 </div>
 
 
-<div
-class="reading"
-id="reading-justica"
->
+<div class="reading" id="reading-justica">
 
 <h3>
 XI — A JUSTIÇA
@@ -1779,7 +1746,8 @@ Essa eu não poderia deixar de colocar.
 </p>
 
 <p>
-É uma carta que eu lembro de você falando quando começou a tirar cartas para mim.
+É uma carta que eu lembro de você falando
+quando começou a tirar cartas para mim.
 </p>
 
 <p>
@@ -1800,10 +1768,7 @@ JUSTIÇA // CODINOME DETECTADO // CARTA PESSOAL
 </div>
 
 
-<div
-class="reading show"
-id="reading-final"
->
+<div class="reading show" id="reading-final">
 
 <div class="divider"></div>
 
@@ -1838,10 +1803,7 @@ O sistema ainda tem algumas acusações contra você. KKKKK
 
 <br>
 
-<button
-class="btn"
-onclick="showFinalReport()"
->
+<button class="btn" onclick="showFinalReport()">
 [ ABRIR RELATÓRIO FINAL ]
 </button>
 
@@ -1852,17 +1814,17 @@ onclick="showFinalReport()"
 
 <button
 class="btn secondary"
-onclick="goTo('screen-dashboard')"
->
+onclick="goTo('screen-dashboard')">
 ← Voltar
 </button>
 
 </div>
-
 </section>
 
 
-<!-- RELATÓRIO FINAL -->
+<!-- =========================================
+     RELATÓRIO FINAL
+     ========================================= -->
 
 <section class="screen" id="screen-report">
 
@@ -1882,7 +1844,8 @@ Você encontrou o arquivo secreto.
 </p>
 
 <p>
-Infelizmente, agora eu tenho acesso a informações que comprometem sua reputação.
+Infelizmente, agora eu tenho acesso a informações
+que comprometem sua reputação.
 </p>
 
 <div class="letter">
@@ -1907,35 +1870,30 @@ Feliz aniversário, Lavi. ♥︎
 
 <button
 class="btn danger"
-onclick="deleteEvidence()"
->
+onclick="deleteEvidence()">
 [ APAGAR TODAS AS EVIDÊNCIAS ]
 </button>
 
-<div
-class="error"
-id="deleteMessage"
-></div>
+<div class="error" id="deleteMessage"></div>
 
 </div>
-
 </section>
 
 </main>
 
 
-<!-- LIGHTBOX -->
+<!-- =========================================
+     LIGHTBOX
+     ========================================= -->
 
 <div
 class="lightbox"
 id="lightbox"
-onclick="closeLightbox(event)"
->
+onclick="closeLightbox(event)">
 
 <button
 class="btn close"
-onclick="closeLightbox(event)"
->
+onclick="closeLightbox(event)">
 FECHAR
 </button>
 
@@ -1947,9 +1905,11 @@ alt="Imagem ampliada"
 </div>
 
 
-<script>
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
 
-/* CONFIGURAÇÕES */
+<script>
 
 const CONFIG={
 nome:'LAVIS',
@@ -1959,7 +1919,102 @@ titulo:'Para Lavi ♡'
 };
 
 
-/* TROCAR DE TELA */
+/* =========================================
+   ✦ ESTRELAS AO CLICAR ✦
+   ========================================= */
+
+function createClickStars(x,y){
+
+const total=14;
+
+for(let i=0;i<total;i++){
+
+const star=document.createElement('span');
+
+star.className='click-star';
+
+const angle=Math.random()*Math.PI*2;
+
+const distance=35+Math.random()*75;
+
+const moveX=Math.cos(angle)*distance;
+
+const moveY=Math.sin(angle)*distance;
+
+star.style.left=x+'px';
+star.style.top=y+'px';
+
+star.style.setProperty(
+'--x',
+moveX+'px'
+);
+
+star.style.setProperty(
+'--y',
+moveY+'px'
+);
+
+
+/* tamanhos diferentes */
+
+const size=3+Math.random()*5;
+
+star.style.width=size+'px';
+star.style.height=size+'px';
+
+
+/* pequena variação no tempo */
+
+star.style.animationDelay=
+(Math.random()*0.08)+'s';
+
+
+document.body.appendChild(star);
+
+
+/* remove depois da animação */
+
+setTimeout(()=>{
+
+star.remove();
+
+},900);
+
+}
+
+}
+
+
+/*
+   Aqui está o segredo:
+   qualquer botão ou link clicado
+   dispara as estrelas exatamente
+   na posição do clique.
+*/
+
+document.addEventListener('click',function(e){
+
+const element=e.target.closest('button,a');
+
+if(!element)return;
+
+
+/*
+   Não cria estrelas se o clique
+   estiver dentro do lightbox ao fechá-lo.
+*/
+
+createClickStars(
+e.clientX,
+e.clientY
+);
+
+});
+
+
+/* =========================================
+   NAVEGAÇÃO
+   ========================================= */
 
 function goTo(id){
 
@@ -1979,9 +2034,14 @@ behavior:'smooth'
 }
 
 
-/* LOGIN */
+/* =========================================
+   LOGIN
+   ========================================= */
 
-document.getElementById('nameDisplay').value=CONFIG.nome;
+document
+.getElementById('nameDisplay')
+.value=CONFIG.nome;
+
 
 document
 .getElementById('passwordInput')
@@ -2003,7 +2063,9 @@ document
 .trim();
 
 const m=
-document.getElementById('loginMessage');
+document
+.getElementById('loginMessage');
+
 
 if(p!==CONFIG.senha){
 
@@ -2013,6 +2075,7 @@ m.textContent=
 return;
 
 }
+
 
 m.textContent='';
 
@@ -2029,7 +2092,9 @@ goTo('screen-dashboard');
 }
 
 
-/* REVELAR MÚSICA */
+/* =========================================
+   ÁUDIOS
+   ========================================= */
 
 function revealAudio(n){
 
@@ -2041,7 +2106,9 @@ document
 }
 
 
-/* BOTÃO NÃO FOGE */
+/* =========================================
+   BOTÃO NÃO
+   ========================================= */
 
 function runAway(){
 
@@ -2063,41 +2130,50 @@ Math.max(
 a.clientHeight-b.offsetHeight
 );
 
+
 b.style.left=
 Math.round(Math.random()*x)+'px';
 
 b.style.top=
 Math.round(Math.random()*y)+'px';
 
+
 document
 .getElementById('questionHint')
-.textContent=
-[
+.textContent=[
+
 'Essa opção não está disponível. 🤨',
+
 'Erro 404: opção não encontrada.',
+
 'Lavinia, por favor KKKKK',
+
 'VOCÊ AINDA ESTÁ TENTANDO???',
+
 'Não. Você sabe que não. 🙂‍↔️'
+
 ][
-Math.floor(
-Math.random()*5
-)
+Math.floor(Math.random()*5)
 ];
 
 }
 
 
-/* RESPOSTA SIM */
+/* =========================================
+   RESPOSTA SIM
+   ========================================= */
 
 function yesAnswer(){
 
 document
 .getElementById('choiceArea')
-.style.display='none';
+.style
+.display='none';
 
 document
 .getElementById('questionHint')
-.style.display='none';
+.style
+.display='none';
 
 document
 .getElementById('questionSuccess')
@@ -2107,20 +2183,25 @@ document
 }
 
 
-/* LIBERAR SECRET */
+/* =========================================
+   DESBLOQUEAR SEGREDO
+   ========================================= */
 
 function unlockSecret(){
 
 document
 .getElementById('secretFile')
-.style.display='flex';
+.style
+.display='flex';
 
 goTo('screen-secret');
 
 }
 
 
-/* CARTAS DE TAROT */
+/* =========================================
+   TAROT
+   ========================================= */
 
 function flipTarot(el,key){
 
@@ -2132,12 +2213,15 @@ document
 
 document
 .getElementById('reading-'+key)
-.classList.add('show');
+.classList
+.add('show');
 
 }
 
 
-/* RELATÓRIO */
+/* =========================================
+   RELATÓRIO
+   ========================================= */
 
 function showFinalReport(){
 
@@ -2146,7 +2230,9 @@ goTo('screen-report');
 }
 
 
-/* LIGHTBOX */
+/* =========================================
+   LIGHTBOX
+   ========================================= */
 
 function openLightbox(file){
 
@@ -2179,7 +2265,9 @@ document
 }
 
 
-/* APAGAR EVIDÊNCIAS */
+/* =========================================
+   APAGAR EVIDÊNCIAS
+   ========================================= */
 
 function deleteEvidence(){
 
@@ -2190,122 +2278,7 @@ document
 
 }
 
-
-/* ✦✦✦ ESTRELAS MÁGICAS ✦✦✦ */
-
-/*
-   Toda vez que qualquer botão for clicado,
-   o site cria pequenas estrelas ao redor dele.
-*/
-
-document.addEventListener('click',function(e){
-
-const botao=e.target.closest('button');
-
-if(!botao)return;
-
-criarEstrelas(botao);
-
-});
-
-
-function criarEstrelas(botao){
-
-const quantidade=14;
-
-const rect=
-botao.getBoundingClientRect();
-
-for(let i=0;i<quantidade;i++){
-
-const estrela=
-document.createElement('span');
-
-estrela.className='magic-star';
-
-
-/* formatos diferentes */
-
-estrela.innerHTML=
-['✦','✧','⋆','★']
-[
-Math.floor(
-Math.random()*4
-)
-];
-
-
-/* posição inicial */
-
-const x=
-rect.left+
-rect.width/2;
-
-const y=
-rect.top+
-rect.height/2;
-
-estrela.style.left=x+'px';
-estrela.style.top=y+'px';
-
-
-/* direção aleatória */
-
-const angulo=
-Math.random()*
-Math.PI*
-2;
-
-const distancia=
-35+
-Math.random()*80;
-
-
-estrela.style.setProperty(
-'--x',
-Math.cos(angulo)*
-distancia+
-'px'
-);
-
-estrela.style.setProperty(
-'--y',
-Math.sin(angulo)*
-distancia+
-'px'
-);
-
-
-/* atraso aleatório */
-
-estrela.style.setProperty(
-'--delay',
-Math.random()*
-0.15+
-'s'
-);
-
-
-/* colocar na página */
-
-document
-.body
-.appendChild(estrela);
-
-
-/* remover depois da animação */
-
-setTimeout(()=>{
-
-estrela.remove();
-
-},1000);
-
-}
-
-}
-
 </script>
 
 </body>
-    </html>
+</html>
